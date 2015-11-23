@@ -15,6 +15,8 @@
 		84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */; };
 		84DA1DDF1C02E5DA00669B7D /* HLLMediaPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DDE1C02E5DA00669B7D /* HLLMediaPlayTests.m */; };
 		84DA1DEA1C02E5DA00669B7D /* HLLMediaPlayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DE91C02E5DA00669B7D /* HLLMediaPlayUITests.m */; };
+		84DA1DF81C02EE7A00669B7D /* Tool in Resources */ = {isa = PBXBuildFile; fileRef = 84DA1DF71C02EE7A00669B7D /* Tool */; };
+		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HLLMediaPlay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.debug.xcconfig"; sourceTree = "<group>"; };
 		84DA1DC11C02E5DA00669B7D /* HLLMediaPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLLMediaPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA1DC51C02E5DA00669B7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84DA1DC71C02E5DA00669B7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		84DA1DE51C02E5DA00669B7D /* HLLMediaPlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HLLMediaPlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA1DE91C02E5DA00669B7D /* HLLMediaPlayUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLMediaPlayUITests.m; sourceTree = "<group>"; };
 		84DA1DEB1C02E5DA00669B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84DA1DF71C02EE7A00669B7D /* Tool */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tool; sourceTree = "<group>"; };
+		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B9AFE9D458B22F3BAA8F255 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5800F73ACBEB2D76F61DC525 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */,
+				C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		84DA1DB81C02E5DA00669B7D = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +109,8 @@
 				84DA1DDD1C02E5DA00669B7D /* HLLMediaPlayTests */,
 				84DA1DE81C02E5DA00669B7D /* HLLMediaPlayUITests */,
 				84DA1DC21C02E5DA00669B7D /* Products */,
+				5800F73ACBEB2D76F61DC525 /* Pods */,
+				4B9AFE9D458B22F3BAA8F255 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +132,7 @@
 				84DA1DCA1C02E5DA00669B7D /* ViewController.h */,
 				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
 				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
+				84DA1DF71C02EE7A00669B7D /* Tool */,
 				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
 				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
 				84DA1DD51C02E5DA00669B7D /* Info.plist */,
@@ -147,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84DA1DEE1C02E5DA00669B7D /* Build configuration list for PBXNativeTarget "HLLMediaPlay" */;
 			buildPhases = (
+				2269E868EF0ECD32A4F5DB72 /* Check Pods Manifest.lock */,
 				84DA1DBD1C02E5DA00669B7D /* Sources */,
 				84DA1DBE1C02E5DA00669B7D /* Frameworks */,
 				84DA1DBF1C02E5DA00669B7D /* Resources */,
+				EE7095D37F0949621333B27D /* Embed Pods Frameworks */,
+				B73B237068F7D1BCACAEC61E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,6 +278,7 @@
 			files = (
 				84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */,
 				84DA1DD11C02E5DA00669B7D /* Assets.xcassets in Resources */,
+				84DA1DF81C02EE7A00669B7D /* Tool in Resources */,
 				84DA1DCF1C02E5DA00669B7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +298,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2269E868EF0ECD32A4F5DB72 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B73B237068F7D1BCACAEC61E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE7095D37F0949621333B27D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84DA1DBD1C02E5DA00669B7D /* Sources */ = {
@@ -414,6 +493,7 @@
 		};
 		84DA1DEF1C02E5DA00669B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HLLMediaPlay/Info.plist;
@@ -425,6 +505,7 @@
 		};
 		84DA1DF01C02E5DA00669B7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HLLMediaPlay/Info.plist;
@@ -501,6 +582,7 @@
 				84DA1DF01C02E5DA00669B7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84DA1DF11C02E5DA00669B7D /* Build configuration list for PBXNativeTarget "HLLMediaPlayTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +591,7 @@
 				84DA1DF31C02E5DA00669B7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84DA1DF41C02E5DA00669B7D /* Build configuration list for PBXNativeTarget "HLLMediaPlayUITests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +600,7 @@
 				84DA1DF61C02E5DA00669B7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
