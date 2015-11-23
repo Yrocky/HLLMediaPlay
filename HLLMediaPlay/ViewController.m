@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "HTTPTool.h"
+#import "HLLSearchMediaModel.h"
 
 @interface ViewController ()
 
@@ -16,15 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
-// 土豆视频API
-// ttp://api.tudou.com/v3/gw?method=item.search
-// 搜索视频内容获取视频
-// 参数要求
 - (IBAction)mainViewContoller_ShowDediaData:(id)sender {
-//    ttp://api.tudou.com/v3/gw?method=item.search
-    NSURL * url = [NSURL URLWithString:@""];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

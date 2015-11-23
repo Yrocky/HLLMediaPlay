@@ -5,7 +5,10 @@
 
 target 'HLLMediaPlay' do
 
-pod 'AFNetworking', '~> 3.0.0-beta.2'
+
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'SDWebImage', '~> 3.7.3'
+pod "AFNetworking", "~> 2.0"
 end
 
 target 'HLLMediaPlayTests' do

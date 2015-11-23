@@ -23,152 +23,21 @@
 	return manager;
 }
 
-+ (NSDictionary *)parametersWithIndex:(NSInteger)index {
-	if (index > 9) {
-		NSString *date = [BaseFunction stringDateBeforeTodaySeveralDays:index];
-		NSDictionary *parameters = @{@"strDate" : date, @"strRow" : @"1"};
-		
-		return parameters;
-	} else {
-		NSString *date = [BaseFunction stringDateFromCurrent];
-		NSDictionary *parameters = @{@"strDate" : date, @"strRow" : [@(++index) stringValue]};
-		
-		return parameters;
-	}
+
++ (void) requestSearchMediaInfoWithKeyWord:(NSString *)keyWord successedBlock:(SuccessBlock)success andFailedBlock:(FailBlock)fail{
+
+    AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
+    NSDictionary *parameters = @{@"keyword":keyWord,
+                                 @"client_id":Youku_Client_id,
+                                 @"period":@"month",
+                                 @"orderby":@"published",
+                                 @"paid":@"0",
+                                 @"public_type":@"all"};
+    
+    [manager GET:URL_Get_Search_Media_Info parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation,responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(operation,error);
+    }];
 }
-
-/**
- *  获取首页数据
- *
- *  @param date    日期，"yyyy-MM-dd"格式
- *  @param success 请求成功 Block
- *  @param fail     请求失败 Block
- */
-+ (void)requestHomeContentByDate:(NSString *)date success:(SuccessBlock)success failBlock:(FailBlock)fail {
-	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-	NSDictionary *parameters = @{@"strDate" : date, @"strRow" : [@1 stringValue]};
-	[manager GET:URL_GET_HOME_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		success(operation,responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		fail(operation,error);
-	}];
-}
-
-/**
- *  获取首页数据
- *
- *  @param index   要展示数据的 Item 的下标
- *  @param success 请求成功 Block
- *  @param fail    请求失败 Block
- */
-+ (void)requestHomeContentByIndex:(NSInteger)index success:(SuccessBlock)success failBlock:(FailBlock)fail {
-	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-	NSDictionary *parameters = [self parametersWithIndex:index];
-	[manager GET:URL_GET_HOME_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		success(operation,responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		fail(operation,error);
-	}];
-}
-
-/**
- *  获取文章
- *
- *  @param date           日期，"yyyy-MM-dd"格式
- *  @param lastUpdateDate 最后更新日期，"yyyy-MM-dd"格式或者也可以是"yyyy-MM-dd HH:mm:ss"格式
- *  @param success        请求成功 Block
- *  @param fail           请求失败 Block
- */
-+ (void)requestReadingContentByDate:(NSString *)date lastUpdateDate:(NSString *)lastUpdateDate success:(SuccessBlock)success failBlock:(FailBlock)fail {
-	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-	NSDictionary *parameters = @{@"strDate" : date, @"strLastUpdateDate" : lastUpdateDate};
-	[manager GET:URL_GET_READING_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		success(operation,responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		fail(operation,error);
-	}];
-}
-
-//+ (void)requestReadingContentByIndex:(NSInteger)index lastUpdateDate:(NSString *)lastUpdateDate success:(SuccessBlock)success failBlock:(FailBlock)fail {
-//	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-//	NSDictionary *parameters = @{@"strDate" : date, @"strLastUpdateDate" : lastUpdateDate};
-//	[manager GET:URL_GET_READING_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		success(operation,responseObject);
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		fail(operation,error);
-//	}];
-//}
-
-/**
- *   获取问题
- *
- *  @param date           日期，"yyyy-MM-dd"格式
- *  @param lastUpdateDate 最后更新日期，"yyyy-MM-dd"格式
- *  @param success        请求成功 Block
- *  @param fail           请求失败 Block
- */
-+ (void)requestQuestionContentByDate:(NSString *)date lastUpdateDate:(NSString *)lastUpdateDate success:(SuccessBlock)success failBlock:(FailBlock)fail {
-	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-	NSDictionary *parameters = @{@"strDate" : date, @"strLastUpdateDate" : lastUpdateDate};
-	[manager GET:URL_GET_QUESTION_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		success(operation,responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		fail(operation,error);
-	}];
-}
-
-//+ (void)requestQuestionContentByIndex:(NSInteger)index lastUpdateDate:(NSString *)lastUpdateDate success:(SuccessBlock)success failBlock:(FailBlock)fail {
-//	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-//	NSDictionary *parameters = @{@"strDate" : date, @"strLastUpdateDate" : lastUpdateDate};
-//	[manager GET:URL_GET_QUESTION_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		success(operation,responseObject);
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		fail(operation,error);
-//	}];
-//}
-
-//+ (void)requestQuestionContentBackupByDate:(NSString *)date success:(SuccessBlock)success failBlock:(FailBlock)fail {
-//	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-//	NSDictionary *parameters = @{@"strDate" : date, @"strRow" : @"1"};
-//	[manager GET:URL_BACKUP_GET_QUESTION_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		success(operation,responseObject);
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		fail(operation,error);
-//	}];
-//}
-
-/**
- *  获取东西
- *
- *  @param date    日期，"yyyy-MM-dd"格式
- *  @param success 请求成功 Block
- *  @param fail     请求失败 Block
- */
-+ (void)requestThingContentByDate:(NSString *)date success:(SuccessBlock)success failBlock:(FailBlock)fail {
-	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-	NSDictionary *parameters = @{@"strDate" : date, @"strRow" : @"1"};
-	[manager GET:URL_GET_THING_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		success(operation,responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		fail(operation,error);
-	}];
-}
-
-/**
- *  获取东西
- *
- *  @param index   要展示数据的 Item 的下标
- *  @param success 请求成功 Block
- *  @param fail    请求失败 Block
- */
-+ (void)requestThingContentByIndex:(NSInteger)index success:(SuccessBlock)success failBlock:(FailBlock)fail {
-	AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-	NSDictionary *parameters = [self parametersWithIndex:index];
-	[manager GET:URL_GET_THING_CONTENT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		success(operation,responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		fail(operation,error);
-	}];
-}
-
 @end

@@ -15,7 +15,10 @@
 		84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */; };
 		84DA1DDF1C02E5DA00669B7D /* HLLMediaPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DDE1C02E5DA00669B7D /* HLLMediaPlayTests.m */; };
 		84DA1DEA1C02E5DA00669B7D /* HLLMediaPlayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DE91C02E5DA00669B7D /* HLLMediaPlayUITests.m */; };
-		84DA1DF81C02EE7A00669B7D /* Tool in Resources */ = {isa = PBXBuildFile; fileRef = 84DA1DF71C02EE7A00669B7D /* Tool */; };
+		84FC24EF1C02F861004F7EA7 /* HTTPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC24EE1C02F861004F7EA7 /* HTTPTool.m */; };
+		84FC24F31C02FEC2004F7EA7 /* HLLSearchMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */; };
+		84FC24F71C030B7E004F7EA7 /* HLLSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC24F61C030B7E004F7EA7 /* HLLSearchController.m */; };
+		84FC24FA1C030D04004F7EA7 /* HLLSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */; };
 		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +58,14 @@
 		84DA1DE51C02E5DA00669B7D /* HLLMediaPlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HLLMediaPlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA1DE91C02E5DA00669B7D /* HLLMediaPlayUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLMediaPlayUITests.m; sourceTree = "<group>"; };
 		84DA1DEB1C02E5DA00669B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84DA1DF71C02EE7A00669B7D /* Tool */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tool; sourceTree = "<group>"; };
+		84FC24ED1C02F861004F7EA7 /* HTTPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPTool.h; path = Tool/HTTPTool.h; sourceTree = "<group>"; };
+		84FC24EE1C02F861004F7EA7 /* HTTPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPTool.m; path = Tool/HTTPTool.m; sourceTree = "<group>"; };
+		84FC24F11C02FEC2004F7EA7 /* HLLSearchMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HLLSearchMediaModel.h; path = ../HLLSearchMediaModel.h; sourceTree = "<group>"; };
+		84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HLLSearchMediaModel.m; path = ../HLLSearchMediaModel.m; sourceTree = "<group>"; };
+		84FC24F51C030B7E004F7EA7 /* HLLSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSearchController.h; sourceTree = "<group>"; };
+		84FC24F61C030B7E004F7EA7 /* HLLSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSearchController.m; sourceTree = "<group>"; };
+		84FC24F81C030D04004F7EA7 /* HLLSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSearchCell.h; sourceTree = "<group>"; };
+		84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSearchCell.m; sourceTree = "<group>"; };
 		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,8 +141,12 @@
 				84DA1DC81C02E5DA00669B7D /* AppDelegate.m */,
 				84DA1DCA1C02E5DA00669B7D /* ViewController.h */,
 				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
+				84FC24F51C030B7E004F7EA7 /* HLLSearchController.h */,
+				84FC24F61C030B7E004F7EA7 /* HLLSearchController.m */,
 				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
-				84DA1DF71C02EE7A00669B7D /* Tool */,
+				84FC24FB1C030D09004F7EA7 /* view */,
+				84FC24F41C02FECC004F7EA7 /* model */,
+				84FC24F01C02FE92004F7EA7 /* tool */,
 				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
 				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
 				84DA1DD51C02E5DA00669B7D /* Info.plist */,
@@ -165,6 +179,33 @@
 				84DA1DEB1C02E5DA00669B7D /* Info.plist */,
 			);
 			path = HLLMediaPlayUITests;
+			sourceTree = "<group>";
+		};
+		84FC24F01C02FE92004F7EA7 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				84FC24ED1C02F861004F7EA7 /* HTTPTool.h */,
+				84FC24EE1C02F861004F7EA7 /* HTTPTool.m */,
+			);
+			name = tool;
+			sourceTree = "<group>";
+		};
+		84FC24F41C02FECC004F7EA7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				84FC24F11C02FEC2004F7EA7 /* HLLSearchMediaModel.h */,
+				84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		84FC24FB1C030D09004F7EA7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				84FC24F81C030D04004F7EA7 /* HLLSearchCell.h */,
+				84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +273,7 @@
 		84DA1DB91C02E5DA00669B7D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HLL;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = admin;
 				TargetAttributes = {
@@ -278,7 +320,6 @@
 			files = (
 				84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */,
 				84DA1DD11C02E5DA00669B7D /* Assets.xcassets in Resources */,
-				84DA1DF81C02EE7A00669B7D /* Tool in Resources */,
 				84DA1DCF1C02E5DA00669B7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,9 +393,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FC24F71C030B7E004F7EA7 /* HLLSearchController.m in Sources */,
+				84FC24FA1C030D04004F7EA7 /* HLLSearchCell.m in Sources */,
+				84FC24F31C02FEC2004F7EA7 /* HLLSearchMediaModel.m in Sources */,
 				84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */,
 				84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */,
 				84DA1DC61C02E5DA00669B7D /* main.m in Sources */,
+				84FC24EF1C02F861004F7EA7 /* HTTPTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
