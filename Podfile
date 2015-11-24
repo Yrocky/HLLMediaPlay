@@ -5,6 +5,8 @@
 
 target 'HLLMediaPlay' do
 
+
+pod 'MJExtension', '~> 3.0.7'
 pod 'Masonry', '~> 0.6.3'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SDWebImage', '~> 3.7.3'

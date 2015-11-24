@@ -27,6 +27,7 @@
 		84FC25601C0449A5004F7EA7 /* MoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */; };
 		84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25611C0458EF004F7EA7 /* lunch.jpg */; };
 		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
+		D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */ = {isa = PBXBuildFile; fileRef = D7DDC8301C0493FF002315A5 /* mediaSource.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePlayerViewController.m; sourceTree = "<group>"; };
 		84FC25611C0458EF004F7EA7 /* lunch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lunch.jpg; path = Resource/lunch.jpg; sourceTree = "<group>"; };
 		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
+		D7DDC8301C0493FF002315A5 /* mediaSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mediaSource.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				84FC24F41C02FECC004F7EA7 /* model */,
 				84FC24F01C02FE92004F7EA7 /* tool */,
 				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
+				D7DDC8301C0493FF002315A5 /* mediaSource.json */,
 				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
 				84DA1DD51C02E5DA00669B7D /* Info.plist */,
 				84DA1DC41C02E5DA00669B7D /* Supporting Files */,
@@ -349,6 +352,7 @@
 			files = (
 				84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */,
 				84DA1DD11C02E5DA00669B7D /* Assets.xcassets in Resources */,
+				D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */,
 				84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */,
 				84DA1DCF1C02E5DA00669B7D /* Main.storyboard in Resources */,
 			);
