@@ -28,6 +28,9 @@
 		84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25611C0458EF004F7EA7 /* lunch.jpg */; };
 		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
 		D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */ = {isa = PBXBuildFile; fileRef = D7DDC8301C0493FF002315A5 /* mediaSource.json */; };
+		D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */; };
+		D7DDC8371C04A18E002315A5 /* HLLOnlineController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDC8361C04A18E002315A5 /* HLLOnlineController.m */; };
+		D7DDC83A1C04A34A002315A5 /* HLLOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDC8391C04A34A002315A5 /* HLLOnlineCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,12 @@
 		84FC25611C0458EF004F7EA7 /* lunch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lunch.jpg; path = Resource/lunch.jpg; sourceTree = "<group>"; };
 		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
 		D7DDC8301C0493FF002315A5 /* mediaSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mediaSource.json; sourceTree = "<group>"; };
+		D7DDC8321C049CEA002315A5 /* HLLMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLMediaModel.h; sourceTree = "<group>"; };
+		D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLMediaModel.m; sourceTree = "<group>"; };
+		D7DDC8351C04A18E002315A5 /* HLLOnlineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLOnlineController.h; sourceTree = "<group>"; };
+		D7DDC8361C04A18E002315A5 /* HLLOnlineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLOnlineController.m; sourceTree = "<group>"; };
+		D7DDC8381C04A34A002315A5 /* HLLOnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLOnlineCell.h; sourceTree = "<group>"; };
+		D7DDC8391C04A34A002315A5 /* HLLOnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLOnlineCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +178,8 @@
 				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
 				84FC24F51C030B7E004F7EA7 /* HLLSearchController.h */,
 				84FC24F61C030B7E004F7EA7 /* HLLSearchController.m */,
+				D7DDC8351C04A18E002315A5 /* HLLOnlineController.h */,
+				D7DDC8361C04A18E002315A5 /* HLLOnlineController.m */,
 				84FC25531C041C7D004F7EA7 /* HLLPlayViewController.h */,
 				84FC25541C041C7D004F7EA7 /* HLLPlayViewController.m */,
 				84FC255E1C0449A5004F7EA7 /* MoviePlayerViewController.h */,
@@ -178,6 +189,7 @@
 				84FC24F41C02FECC004F7EA7 /* model */,
 				84FC24F01C02FE92004F7EA7 /* tool */,
 				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
+				84FC25611C0458EF004F7EA7 /* lunch.jpg */,
 				D7DDC8301C0493FF002315A5 /* mediaSource.json */,
 				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
 				84DA1DD51C02E5DA00669B7D /* Info.plist */,
@@ -226,7 +238,8 @@
 			children = (
 				84FC24F11C02FEC2004F7EA7 /* HLLSearchMediaModel.h */,
 				84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */,
-				84FC25611C0458EF004F7EA7 /* lunch.jpg */,
+				D7DDC8321C049CEA002315A5 /* HLLMediaModel.h */,
+				D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -236,6 +249,8 @@
 			children = (
 				84FC24F81C030D04004F7EA7 /* HLLSearchCell.h */,
 				84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */,
+				D7DDC8381C04A34A002315A5 /* HLLOnlineCell.h */,
+				D7DDC8391C04A34A002315A5 /* HLLOnlineCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -427,13 +442,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7DDC8371C04A18E002315A5 /* HLLOnlineController.m in Sources */,
 				84FC24F71C030B7E004F7EA7 /* HLLSearchController.m in Sources */,
 				84FC24FA1C030D04004F7EA7 /* HLLSearchCell.m in Sources */,
 				84FC24F31C02FEC2004F7EA7 /* HLLSearchMediaModel.m in Sources */,
 				84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */,
 				84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */,
 				84FC25601C0449A5004F7EA7 /* MoviePlayerViewController.m in Sources */,
+				D7DDC83A1C04A34A002315A5 /* HLLOnlineCell.m in Sources */,
 				84DA1DC61C02E5DA00669B7D /* main.m in Sources */,
+				D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */,
 				84FC24EF1C02F861004F7EA7 /* HTTPTool.m in Sources */,
 				84FC25551C041C7D004F7EA7 /* HLLPlayViewController.m in Sources */,
 			);

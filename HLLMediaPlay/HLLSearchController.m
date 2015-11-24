@@ -11,6 +11,8 @@
 #import "HLLSearchCell.h"
 #import "HTTPTool.h"
 #import "HLLPlayViewController.h"
+#import "MJExtension.h"
+#import "HLLMediaModel.h"
 
 @interface HLLSearchController ()<UISearchBarDelegate>
 
@@ -29,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self searchKeyword:@"旅游宣传片"];
+    
 //    [self.tableView registerClass:[HLLSearchCell class] forCellReuseIdentifier:@"search"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -48,8 +51,6 @@
         HLLPlayViewController * playViewController = segue.destinationViewController;
         playViewController.model = sender;
     }
-
-    
 }
 #pragma mark - UITableViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

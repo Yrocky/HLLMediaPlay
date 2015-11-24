@@ -1,0 +1,73 @@
+关于金象微电影api的解读
+
+
+
+搜索视频：
+http://api2.jxvdy.com/search_list?model=video&keywords=%E6%A0%A1%E5%9B%AD&count=15&token=gDATiGWi8G1HPXi_-r3TORzC7Igp6_OzlXoaB6-oQ-gbmfjYlPSY1HHMu0Wglnexr6cuX8ikaw&offset=0
+
+GET
+
+token	gDATiGWi8G1HPXi_-r3TORzC7Igp6_OzlXoaB6-oQ-gbmfjYlPSY1HHMu0Wglnexr6cuX8ikaw
+
+参数：
+model=video
+count=15
+offset=0
+keywords=nba
+token=gDATiGWi8G1HPXi_-r3TORzC7Igp6_OzlXoaB6-oQ-gbmfjYlPSY1HHMu0Wglnexr6cuX8ikaw
+
+返回结果中的image地址要把“\”去掉
+
+返回结果json格式：
+{
+	"id": 4997,
+	"title": "\u4e00\u514b\u62c9\u68a6\u60f3\u4e4b\u6821\u56ed\u82f1\u96c4",
+	"img": "http:\/\/image.jxvdy.com\/old\/201408\/24\/12-41-53-27-3.jpg",
+	"score": 0,
+	"description": "\u9752\u6625\u5fae\u7535\u5f71\uff0c\u60f3\u8981\u62cd\u7535\u5f71\u7684\u4e2d\u5b66\u751f",
+	"time": 1408855260
+}
+
+
+
+http://v.jxvdy.com/sendfile/59dFqnok0JPX_qj_Tn7Dd2ggKBsB--JVjYlCSzCyEpPH7nMP7syZBq7aXhPPRu2MR3GKODdzVyD5ttRw5eG_sM82c0x0rA
+
+
+获取视频详细信息：
+http://api2.jxvdy.com/video_info?token=gDATiGWi8G1HPXi_-r3TORzC7Igp6_OzlXoaB6-oQ-gbmfjYlPSY1HHMu0Wglnexr6cuX8ikaw&id=31837
+
+token获取是固定的 gDATiGWi8G1HPXi_-r3TORzC7Igp6_OzlXoaB6-oQ-gbmfjYlPSY1HHMu0Wglnexr6cuX8ikaw
+id是视频id，由搜索到的视频json中获取
+
+
+其中返回结果中的url也要将“\”删除掉
+返回结果json格式：
+{
+	"title": "\u6c11\u95f4\u9b3c\u672f\u4e4b\u9ec4\u76ae\u5b50",
+	"description": "\u60ac\u7591\u52a8\u753b\uff0c\u9ec4\u76ae\u5b50\u7684\u590d\u4ec7",
+	"score": "5.0",
+	"directors": "",
+	"writers": "",
+	"actors": "",
+	"type": ["\u52a8\u753b", "\u5267\u60c5"],
+	"zone": "\u56fd\u5185",
+	"year": "2015",
+	"introduction": "\u5927\u96ea\u7eb7\u98de\u7684\u5929\u6c14\u91cc\uff0c\u7537\u4eba\u4e3a\u4e86\u7ed9\u6000\u5b55\u7684\u59bb\u5b50\u8865\u8865\u8eab\u5b50\u5916\u51fa\u6253\u730e\uff0c\u53ea\u6253\u5230\u4e00\u53ea\u9ec4\u76ae\u5b50\uff0c\u5374\u5728\u81ea\u5bb6\u95e8\u53e3\u6361\u5230\u4e86\u51e0\u7c92\u91d1\u5b50\uff0c\u4e0d\u660e\u6240\u4ee5\u7684\u7537\u4eba\u7ee7\u7eed\u5c06\u9ec4\u76ae\u5b50\u5265\u76ae\u7096\u6c64\uff0c\u5374\u6ca1\u60f3\u5230\u91d1\u5b50\u662f\u53e6\u4e00\u53ea\u9ec4\u76ae\u5b50\u4e3a\u8d4e\u56de\u4ed6\u6293\u7684\u9ec4\u76ae\u5b50\u9001\u7684\uff0c\u75db\u5931\u4eb2\u4eba\u7684\u9ec4\u76ae\u5b50\u5411\u730e\u4eba\u53d1\u8d77\u4e86\u6700\u60e8\u70c8\u7684\u62a5\u590d...",
+	"pubid": 312045,
+	"pubface": null,
+	"pubnick": "yanshahuo",
+	"time": 1429528276,
+	"mycollect": 0,
+	"url": "http:\/\/www.jxvdy.com\/video\/0001500937.html",
+	"playurl": {
+		"720P": "http:\/\/v.jxvdy.com\/sendfile\/V7fo3U9VdEiwtqCIAIFQ01lbzqaOW6pJkb3J7jq4XI9Zhs7DO4TtmiM3quYWi-Zv7gAv7Fb1lq_ehq1KZ9trRTkjtFiLig",
+		"480P": "http:\/\/v.jxvdy.com\/sendfile\/9HE99le-ZhE9OIVVYXGJcBYHSsULO82qcDV660dcxIQydKgGOMN--ZXuc0tzvp9MzgM2MHeKIifIwVAiFDvt1GpNY6lbBg",
+		"360P": "http:\/\/v.jxvdy.com\/sendfile\/59dFqnok0JPX_qj_Tn7Dd2ggKBsB--JVjYlCSzCyEpPH7nMP7syZBq7aXhPPRu2MR3GKODdzVyD5ttRw5eG_sM82c0x0rA"
+	}
+}
+
+
+这个是下载地址，也就是视频的播放地址：
+http://v.jxvdy.com/sendfile/V7fo3U9VdEiwtqCIAIFQ01lbzqaOW6pJkb3J7jq4XI9Zhs7DO4TtmiM3quYWi-Zv7gAv7Fb1lq_ehq1KZ9trRTkjtFiLig
+
+其中需要的是将视频播放地址中的“playurl”中将“\”去掉

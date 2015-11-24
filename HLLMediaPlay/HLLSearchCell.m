@@ -27,7 +27,6 @@
 
     self.titleLabel.text = model.title;
     self.userNameLabel.text = model.user_name;
-//    NSLog(@"%@",model.duration);
     self.timeLabel.text = [NSString stringWithFormat:@"%@",model.duration];
     self.categoryLabel.text = model.category;
     NSURL * url = [NSURL URLWithString:model.thumbnail];

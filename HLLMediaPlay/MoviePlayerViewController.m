@@ -26,7 +26,10 @@
 @property(nonatomic,strong)UISlider *volumeViewSlider;
 @property(nonatomic,strong)UIActivityIndicatorView *activity; // 系统菊花
 @property(nonatomic,strong)UIProgressView *progress; // 缓冲条
+@property(nonatomic,strong)UIButton *backButton;
+@property(nonatomic,strong)UIButton *fullScreenButton;
 @property(nonatomic,strong)UIView *topView;
+@property(nonatomic,strong)UIView *bottomView;
 
 @end
 
@@ -59,33 +62,20 @@
     [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@0);
         make.top.equalTo(@0);
+        make.right.equalTo(@0);
         make.height.equalTo(@200);
     }];
-    _backView.backgroundColor = [UIColor redColor];
-    
-    self.topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _height, 40)];
-    _topView.backgroundColor = [UIColor blackColor];
-    _topView.alpha = 0.5;
-    [_backView addSubview:_topView];
-    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-    }];
-    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];// 监听loadedTimeRanges属性
+    _backView.backgroundColor = [UIColor clearColor];
 
-    [self createProgress];
-    [self createSlider];
-    [self createCurrentTimeLabel];
-    [self createButton];
-    [self backButton];
-    [self createTitle];
+    [self creatTopView];
+    
+    [self creatBottomView];
+    
     [self createGesture];
     
     [self customVideoSlider];
     
-    self.activity = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    _activity.center = _backView.center;
-    [self.view addSubview:_activity];
-    [_activity startAnimating];
+    [self creatActivityIndicatorView];
     
 //    //延迟线程
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -120,17 +110,6 @@
 {
     return YES; // 返回NO表示要显示，返回YES将hiden
 }
-#pragma mark - 创建UISlider
-- (void)createSlider
-{
-    self.slider = [[UISlider alloc]init];
-    [self.backView addSubview:_slider];
-    
-    [_slider setThumbImage:[UIImage imageNamed:@"iconfont-yuan.png"] forState:UIControlStateNormal];
-    [_slider addTarget:self action:@selector(progressSlider:) forControlEvents:UIControlEventValueChanged];
-    _slider.minimumTrackTintColor = [UIColor colorWithRed:30 / 255.0 green:80 / 255.0 blue:100 / 255.0 alpha:1];
-    
-}
 
 #pragma mark - slider滑动事件
 - (void)progressSlider:(UISlider *)slider
@@ -161,12 +140,6 @@
     
     }
 }
-#pragma mark - 创建UIProgressView
-- (void)createProgress
-{
-    self.progress = [[UIProgressView alloc]initWithFrame:CGRectMake(102, 352, _width * 0.69, 15)];
-    [_backView addSubview:_progress];
-}
 #pragma mark -
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
@@ -196,25 +169,6 @@
     [self.slider setMaximumTrackImage:transparentImage forState:UIControlStateNormal];
 }
 
-
-
-
-
-
-
-
-#pragma mark - 创建播放时间
-- (void)createCurrentTimeLabel
-{
-    self.currentTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(_width *0.86, 342, 100, 20)];
-    [self.backView addSubview:_currentTimeLabel];
-    _currentTimeLabel.textColor = [UIColor whiteColor];
-//    _currentTimeLabel.backgroundColor = [UIColor blueColor];
-    _currentTimeLabel.font = [UIFont systemFontOfSize:12];
-    _currentTimeLabel.text = @"00:00/00:00";
-    
-   
-}
 #pragma mark - 计时器事件
 - (void)Stack
 {
@@ -242,14 +196,95 @@
     }
     
 }
-#pragma mark - 播放和下一首按钮
-- (void)createButton
+
+#pragma mark - 菊花
+- (void) creatActivityIndicatorView{
+
+    _activity = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.view addSubview:_activity];
+    [_activity mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(_backView);
+    }];
+    [_activity startAnimating];
+}
+#pragma mark - 顶部视图
+- (void)creatTopView
 {
-    UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    startButton.frame = CGRectMake(15, 337, 30, 30);
-    [self.backView addSubview:startButton];
-    if (_player.rate == 1.0) {
+    _topView = [[UIView alloc]init];
+    _topView.backgroundColor = [UIColor blackColor];
+    _topView.alpha = 0.5;
+    [_backView addSubview:_topView];
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.top.equalTo(@0);
+        make.height.equalTo(@40);
+        make.right.equalTo(@0);
+    }];
+    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];// 监听loadedTimeRanges属性
     
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:[UIImage imageNamed:@"gobackBtn.png"] forState:UIControlStateNormal];
+    [_topView addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@10);
+        make.centerY.equalTo(@0);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    [button addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    button.hidden = YES;
+    self.backButton = button;
+    
+    _fullScreenButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_fullScreenButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_topView addSubview:_fullScreenButton];
+    _fullScreenButton.backgroundColor = [UIColor orangeColor];
+    [_fullScreenButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.size.mas_equalTo(_backButton);
+        make.centerY.mas_equalTo(_backButton);
+    }];
+    [_fullScreenButton addTarget:self action:@selector(fullScreenButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *label = [[UILabel alloc]init];
+    [self.topView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(0);
+        make.height.mas_equalTo(25);
+    }];
+    label.font = [UIFont systemFontOfSize:15];
+    label.textColor = [UIColor whiteColor];
+    label.text = @"黄皮子";
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    
+}
+
+#pragma mark - 底部视图
+- (void)creatBottomView
+{
+    
+    _bottomView = [[UIView alloc] init];
+    _bottomView.backgroundColor = [UIColor blackColor];
+    _bottomView.alpha = 0.5;
+    [_backView addSubview:_bottomView];
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.height.mas_equalTo(35);
+    }];
+    
+#pragma mark - start
+    
+    UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.bottomView addSubview:startButton];
+    if (_player.rate == 1.0) {
+    [startButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(5);
+        make.centerY.mas_equalTo(0);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
     [startButton setBackgroundImage:[UIImage imageNamed:@"pauseBtn.png"] forState:UIControlStateNormal];
     } else {
         [startButton setBackgroundImage:[UIImage imageNamed:@"playBtn.png"] forState:UIControlStateNormal];
@@ -257,12 +292,45 @@
     }
     [startButton addTarget:self action:@selector(startAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame = CGRectMake(60, 340, 25, 25);
-    [self.backView addSubview:nextButton];
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"nextPlayer.png"] forState:UIControlStateNormal];
+#pragma mark - time
     
+    _currentTimeLabel = [[UILabel alloc]init];
+    _currentTimeLabel.textAlignment = NSTextAlignmentRight;
+    [self.bottomView addSubview:_currentTimeLabel];
     
+    [self.currentTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(20);
+        make.right.mas_equalTo(-5);
+        make.width.mas_greaterThanOrEqualTo(2);
+        make.centerY.mas_equalTo(startButton);
+    }];
+    _currentTimeLabel.textColor = [UIColor whiteColor];
+    _currentTimeLabel.font = [UIFont systemFontOfSize:12];
+    _currentTimeLabel.text = @"00:00/00:00";
+    
+#pragma mark - progress
+    
+    self.progress = [[UIProgressView alloc]init];
+    [_bottomView addSubview:_progress];
+    
+    [self.progress mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(startButton.mas_right).offset(10);
+        make.centerY.mas_equalTo(startButton);
+        make.right.equalTo(_currentTimeLabel.mas_left).offset(-10);
+    }];
+    
+#pragma mark - slider
+    
+    self.slider = [[UISlider alloc]init];
+    [self.bottomView addSubview:_slider];
+    [self.slider mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(startButton.mas_right).offset(10);
+//        make.centerY.mas_equalTo(startButton);
+//        make.right.equalTo(_currentTimeLabel.mas_left).offset(-10);
+    }];
+    [_slider setThumbImage:[UIImage imageNamed:@"iconfont-yuan.png"] forState:UIControlStateNormal];
+    [_slider addTarget:self action:@selector(progressSlider:) forControlEvents:UIControlEventValueChanged];
+    _slider.minimumTrackTintColor = [UIColor colorWithRed:30 / 255.0 green:80 / 255.0 blue:100 / 255.0 alpha:1];
 }
 #pragma mark - 播放暂停按钮方法
 - (void)startAction:(UIButton *)button
@@ -279,23 +347,7 @@
     button.selected =!button.selected;
     
 }
-#pragma mark - 返回按钮方法
-- (void)backButton
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(15, 20, 30, 30);
-    [button setBackgroundImage:[UIImage imageNamed:@"gobackBtn.png"] forState:UIControlStateNormal];
-    [_topView addSubview:button];
-    [button addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
-}
-#pragma mark - 创建标题
-- (void)createTitle
-{
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(80, 20, 250, 30)];
-    [_backView addSubview:label];
-    label.textColor = [UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-}
+
 #pragma mark - 创建手势
 - (void)createGesture
 {
@@ -400,7 +452,9 @@
         
     }];
 }
+- (void) fullScreenButtonAction{
 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
