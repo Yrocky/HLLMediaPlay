@@ -13,6 +13,10 @@
 #import <AVKit/AVKit.h>
 #import "MoviePlayerViewController.h"
 
+//设备物理尺寸
+#define screen_width [UIScreen mainScreen].bounds.size.width
+#define screen_height [UIScreen mainScreen].bounds.size.height
+
 @interface HLLPlayViewController ()
 @property(nonatomic ,strong) AVPlayerViewController * playerViewController;
 @end
@@ -29,10 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    UIWebView *webView=[[UIWebView alloc] initWithFrame:self.view.bounds];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.model.link]]];
-    [self.view addSubview:webView];
+    MoviePlayerViewController * moviePlayerViewController = [[MoviePlayerViewController alloc] init];
+    moviePlayerViewController.view.backgroundColor = [UIColor orangeColor];
+    moviePlayerViewController.view.frame = CGRectMake(0, 0, screen_width, 200);
+    [self.view addSubview:moviePlayerViewController.view];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -52,6 +56,17 @@
     [downloadTask resume];
     
     // Do any additional setup after loading the view.
+}
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    
+    return UIInterfaceOrientationMaskPortrait;
+} //当前viewcontroller支持哪些转屏方向
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 - (void) res{
 

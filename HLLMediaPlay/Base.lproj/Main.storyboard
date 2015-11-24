@@ -253,11 +253,11 @@
             </objects>
             <point key="canvasLocation" x="521" y="343.99999999999994"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="Ase-Gf-0S6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dHP-iG-jIH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="search0" selectedImage="search1" id="tWI-gU-KPi"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search0" selectedImage="search1" id="tWI-gU-KPi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TMy-yI-xxo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -273,11 +273,11 @@
             </objects>
             <point key="canvasLocation" x="1194" y="763.99999999999989"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Local-->
         <scene sceneID="H7Y-xb-YfO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R0F-dB-8ik" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="home0" selectedImage="home1" id="Qyv-Lj-CJn"/>
+                    <tabBarItem key="tabBarItem" title="Local" image="home0" selectedImage="home1" id="Qyv-Lj-CJn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DfP-sa-i4L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

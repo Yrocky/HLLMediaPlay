@@ -28,7 +28,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self searchKeyword:@"旅游宣传片"];
 //    [self.tableView registerClass:[HLLSearchCell class] forCellReuseIdentifier:@"search"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

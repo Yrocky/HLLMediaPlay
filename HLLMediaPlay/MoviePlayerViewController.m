@@ -380,7 +380,6 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         
-        
     }];
     
 }
@@ -388,7 +387,6 @@
 {
     [_player pause];
     [self dismissViewControllerAnimated:YES completion:^{
-        
         
     }];
 }

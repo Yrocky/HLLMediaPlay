@@ -25,6 +25,7 @@
 		84FC255B1C043D7C004F7EA7 /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC25591C043D7C004F7EA7 /* MediaToolbox.framework */; };
 		84FC255D1C043DEE004F7EA7 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC255C1C043DEE004F7EA7 /* AVKit.framework */; };
 		84FC25601C0449A5004F7EA7 /* MoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */; };
+		84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25611C0458EF004F7EA7 /* lunch.jpg */; };
 		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		84FC255C1C043DEE004F7EA7 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		84FC255E1C0449A5004F7EA7 /* MoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayerViewController.h; sourceTree = "<group>"; };
 		84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePlayerViewController.m; sourceTree = "<group>"; };
+		84FC25611C0458EF004F7EA7 /* lunch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lunch.jpg; path = Resource/lunch.jpg; sourceTree = "<group>"; };
 		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 			children = (
 				84FC24F11C02FEC2004F7EA7 /* HLLSearchMediaModel.h */,
 				84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */,
+				84FC25611C0458EF004F7EA7 /* lunch.jpg */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			files = (
 				84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */,
 				84DA1DD11C02E5DA00669B7D /* Assets.xcassets in Resources */,
+				84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */,
 				84DA1DCF1C02E5DA00669B7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
