@@ -35,7 +35,7 @@
     
     MoviePlayerViewController * moviePlayerViewController = [[MoviePlayerViewController alloc] init];
     moviePlayerViewController.view.backgroundColor = [UIColor orangeColor];
-    moviePlayerViewController.view.frame = CGRectMake(0, 0, screen_width, 200);
+    moviePlayerViewController.view.frame = CGRectMake(0, 200, screen_width, 200);
     [self.view addSubview:moviePlayerViewController.view];
     
     

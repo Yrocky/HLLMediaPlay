@@ -9,6 +9,8 @@
 #import "MoviePlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "Masonry.h"
+
 @interface MoviePlayerViewController ()
 
 @property(nonatomic,strong)AVPlayer *player; // 播放属性
@@ -45,22 +47,29 @@
     self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:mediaUrlString]];
     self.player = [AVPlayer playerWithPlayerItem:_playerItem];
     AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-    playerLayer.frame = CGRectMake(0, 0, _width, _height);
+    playerLayer.frame = CGRectMake(0, 0, _height, 200);
     playerLayer.videoGravity = AVLayerVideoGravityResize;
     [self.view.layer addSublayer:playerLayer];
     [_player play];
     //AVPlayer播放完成通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:_player.currentItem];
     
-    self.backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _width, _height)];
+    self.backView = [[UIView alloc]init];
     [self.view addSubview:_backView];
-    _backView.backgroundColor = [UIColor clearColor];
+    [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.top.equalTo(@0);
+        make.height.equalTo(@200);
+    }];
+    _backView.backgroundColor = [UIColor redColor];
     
-    self.topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _width, _height * 0.15)];
+    self.topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _height, 40)];
     _topView.backgroundColor = [UIColor blackColor];
     _topView.alpha = 0.5;
     [_backView addSubview:_topView];
-    
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+    }];
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];// 监听loadedTimeRanges属性
 
     [self createProgress];
@@ -114,8 +123,9 @@
 #pragma mark - 创建UISlider
 - (void)createSlider
 {
-    self.slider = [[UISlider alloc]initWithFrame:CGRectMake(100, 345, _width * 0.7, 15)];
+    self.slider = [[UISlider alloc]init];
     [self.backView addSubview:_slider];
+    
     [_slider setThumbImage:[UIImage imageNamed:@"iconfont-yuan.png"] forState:UIControlStateNormal];
     [_slider addTarget:self action:@selector(progressSlider:) forControlEvents:UIControlEventValueChanged];
     _slider.minimumTrackTintColor = [UIColor colorWithRed:30 / 255.0 green:80 / 255.0 blue:100 / 255.0 alpha:1];
