@@ -27,13 +27,22 @@
 + (void) requestSearchMediaInfoWithKeyWord:(NSString *)keyWord successedBlock:(SuccessBlock)success andFailedBlock:(FailBlock)fail{
 
     AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
+//#ifdef Youku_Tudou
+//    NSDictionary * parameters = @{@"method":@"item.search",
+//                            @"kw":keyWord,
+//                            @"inDays":@"7",
+//                            @"ttlevel":@"m",
+//                            @"sort":@"t",
+//                            @"media":@"v"};
+//#else
     NSDictionary *parameters = @{@"keyword":keyWord,
                                  @"client_id":Youku_Client_id,
                                  @"period":@"month",
                                  @"orderby":@"published",
                                  @"paid":@"0",
-                                 @"public_type":@"all"};
-    
+                                 @"public_type":@"all",
+                                 @"timeless":@"60"};
+//#endif
     [manager GET:URL_Get_Search_Media_Info parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

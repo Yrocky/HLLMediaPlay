@@ -10,7 +10,7 @@
 #import "HLLSearchMediaModel.h"
 #import "HLLSearchCell.h"
 #import "HTTPTool.h"
-
+#import "HLLPlayViewController.h"
 
 @interface HLLSearchController ()<UISearchBarDelegate>
 
@@ -41,11 +41,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ 
+    NSString * identifier = segue.identifier;
+    if ([identifier isEqualToString:@"play"]) {
+        HLLPlayViewController * playViewController = segue.destinationViewController;
+        playViewController.model = sender;
+    }
 
+    
+}
 #pragma mark - UITableViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    [self.view endEditing:YES];
+}
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HLLSearchMediaModel * model = self.searchResuletMArray[indexPath.row];
+    [self performSegueWithIdentifier:@"play" sender:model];
 }
 #pragma mark - UITableViewDataSource
 
@@ -74,23 +89,21 @@
     [self.view endEditing:YES];
     NSString * searchInfo = searchBar.text;
     
-    [HTTPTool requestSearchMediaInfoWithKeyWord:searchInfo successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"result:%@",responseObject);
-        NSArray * videos = [responseObject valueForKey:@"videos"];
-        for (NSDictionary * video in videos) {
-            HLLSearchMediaModel * model = [HLLSearchMediaModel mediaModelWithDictionary:video];
-            [self.searchResuletMArray addObject:model];
-        }
-        [self.tableView reloadData];
-    } andFailedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"fail:%@",error.localizedDescription);
-    }];
+    [self.searchResuletMArray removeAllObjects];
+    [self.tableView reloadData];
+    
+    [self searchKeyword:searchInfo];
 }
 
 #pragma mark - action
 - (IBAction)searchMediaInfoWithKeyword:(UIBarButtonItem *)sender {
     
-    [HTTPTool requestSearchMediaInfoWithKeyWord:@"NBA" successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self searchKeyword:@"NBA"];
+}
+
+- (void) searchKeyword:(NSString *)keyWord{
+    
+    [HTTPTool requestSearchMediaInfoWithKeyWord:keyWord successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"result:%@",responseObject);
         NSArray * videos = [responseObject valueForKey:@"videos"];
         for (NSDictionary * video in videos) {
@@ -101,7 +114,9 @@
     } andFailedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"fail:%@",error.localizedDescription);
     }];
+    
 }
+
 
 
 - (IBAction)clearSearchMediaData:(id)sender {

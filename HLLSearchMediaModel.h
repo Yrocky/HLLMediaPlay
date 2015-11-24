@@ -14,10 +14,17 @@
 
 @property (nonatomic ,copy) NSString * title;// 视频标题
 @property (nonatomic ,copy) NSString * thumbnail;// 视频截图
-@property (nonatomic ,strong) NSString * category;// 视频分类
-@property (nonatomic ,strong) NSString * link;// 视频地址
-@property (nonatomic ,assign) NSString * duration;// 视频时长
+@property (nonatomic ,copy) NSString * category;// 视频分类
+@property (nonatomic ,copy) NSString * link;// 视频地址
+@property (nonatomic ,copy) NSString * duration;// 视频时长
 @property (nonatomic ,copy) NSString * user_name;// 上传作者
+@property (nonatomic ,copy) NSArray * tags;// 标签
+
+@property (nonatomic ,copy) NSString * published;// 发布时间
+@property (nonatomic ,copy) NSString * user_link;// 用户的地址
+@property (nonatomic ,assign) NSInteger comment_count;// 评论总数
+@property (nonatomic ,assign) NSInteger view_couint;// 总播放数
+@property (nonatomic ,assign) NSInteger favorite_count;// 总收藏数
 
 + (instancetype) mediaModelWithDictionary:(NSDictionary *)dict;
 - (instancetype) initMediaModelWithDictionary:(NSDictionary *)dict;
@@ -28,7 +35,7 @@
  {
      category = "\U4f53\U80b2";
      "comment_count" = 0;
-     "down_count" = 0;
+     "  " = 0;
      duration = "16.00";
      "favorite_count" = 0;
      id = "XMTM5MzgxNjAwMA==";

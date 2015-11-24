@@ -11,7 +11,12 @@
 
 
 // 获取关键字搜索视频内容结果
+
+//#define URL_Get_Search_Media_Info @"//http://api.tudou.com/v3/gw"
+
+
 #define URL_Get_Search_Media_Info @"https://openapi.youku.com/v2/searches/video/by_keyword.json"
+
 
 // youku云app的client_id
 #define Youku_Client_id @"920e518867b95b70"

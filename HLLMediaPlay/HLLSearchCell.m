@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
+@property(nonatomic ,strong) UIColor * categoryColor;
 
 @end
 @implementation HLLSearchCell
@@ -26,15 +27,22 @@
 
     self.titleLabel.text = model.title;
     self.userNameLabel.text = model.user_name;
-    self.timeLabel.text = [NSString stringWithFormat:@"时长:%@",model.duration];
+//    NSLog(@"%@",model.duration);
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",model.duration];
     self.categoryLabel.text = model.category;
-    [self.searchImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]
+    NSURL * url = [NSURL URLWithString:model.thumbnail];
+    
+    [self.searchImageView sd_setImageWithURL:url
                       placeholderImage:[UIImage imageNamed:@"load"]];
 }
 - (void)awakeFromNib {
-    // Initialization code
+    _categoryColor = self.categoryLabel.backgroundColor;
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
+    [super touchesBegan:touches withEvent:event];
+    self.categoryLabel.backgroundColor = self.categoryColor;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
