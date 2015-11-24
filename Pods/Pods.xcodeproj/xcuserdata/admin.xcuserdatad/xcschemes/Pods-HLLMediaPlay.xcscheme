@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6060641632F5422DF6D5EE31'
+               BlueprintIdentifier = '92B72A8A8E311179832CBE22'
                BlueprintName = 'Pods-HLLMediaPlay'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-HLLMediaPlay.a'>

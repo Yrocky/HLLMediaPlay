@@ -38,6 +38,7 @@
     moviePlayerViewController.view.frame = CGRectMake(0, 0, screen_width, 200);
     [self.view addSubview:moviePlayerViewController.view];
     
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     

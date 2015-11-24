@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HLLMediaPlay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,17 +32,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A21CF2F33CBC5072C6A5D5F10866401</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3FE7FAD516222127896CBDECEA9C88F</key>
+		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D547B9ECDC6D7C5A795FB0CD466C8CC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB32684E70CC0D0727AB9734D9883B64</key>
 		<dict>
 			<key>primary</key>
 			<true/>

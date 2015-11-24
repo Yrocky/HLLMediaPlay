@@ -5,7 +5,7 @@
 
 target 'HLLMediaPlay' do
 
-
+pod 'Masonry', '~> 0.6.3'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SDWebImage', '~> 3.7.3'
 pod "AFNetworking", "~> 2.0"
