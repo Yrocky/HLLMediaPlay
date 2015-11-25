@@ -8,26 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>MJExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-HLLMediaPlay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -42,12 +57,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>53C32D0628D12852EC7EB510CEC1C352</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B23B3D15FFC0FC9893968F478086D58D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D547B9ECDC6D7C5A795FB0CD466C8CC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EB32684E70CC0D0727AB9734D9883B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC61B6216DAAB24E13452E5C12A56D0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
