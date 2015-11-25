@@ -10,4 +10,10 @@
 
 @implementation HLLMediaModel
 
+-(NSDictionary *) propertyMapDic{
+ 
+    NSDictionary * dict = @{@"id":@"ID",
+                            @"description":@"mediaDescription"};
+    return dict;
+}
 @end

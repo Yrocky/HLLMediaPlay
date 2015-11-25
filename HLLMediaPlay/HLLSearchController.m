@@ -11,8 +11,6 @@
 #import "HLLSearchCell.h"
 #import "HTTPTool.h"
 #import "HLLPlayViewController.h"
-#import "MJExtension.h"
-#import "HLLMediaModel.h"
 
 @interface HLLSearchController ()<UISearchBarDelegate>
 
@@ -31,13 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self searchKeyword:@"旅游宣传片"];
-    
-//    [self.tableView registerClass:[HLLSearchCell class] forCellReuseIdentifier:@"search"];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,12 +87,6 @@
     [self searchKeyword:searchInfo];
 }
 
-#pragma mark - action
-- (IBAction)searchMediaInfoWithKeyword:(UIBarButtonItem *)sender {
-    
-    [self searchKeyword:@"NBA"];
-}
-
 - (void) searchKeyword:(NSString *)keyWord{
     
     [HTTPTool requestSearchMediaInfoWithKeyWord:keyWord successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -117,8 +102,6 @@
     }];
     
 }
-
-
 
 - (IBAction)clearSearchMediaData:(id)sender {
     
