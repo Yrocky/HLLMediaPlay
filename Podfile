@@ -6,6 +6,8 @@
 target 'HLLMediaPlay' do
 
 
+pod 'MJRefresh', '~> 3.0.5'
+pod 'FDFullscreenPopGesture', '1.1'
 pod 'MJExtension', '~> 3.0.7'
 pod 'Masonry', '~> 0.6.3'
 pod 'MBProgressHUD', '~> 0.9.1'

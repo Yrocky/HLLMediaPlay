@@ -12,6 +12,11 @@
 #define mediaUrlString @"http://v.jxvdy.com/sendfile/V7fo3U9VdEiwtqCIAIFQ01lbzqaOW6pJkb3J7jq4XI9Zhs7DO4TtmiM3quYWi-Zv7gAv7Fb1lq_ehq1KZ9trRTkjtFiLig"
 
 //#define mediaUrlString @"http://221.229.165.31:80/play/274CF5C996AFCE2C751D315B5D1BF131B8C08208/298088%5Fstandard.mp4"
+
+@class HLLMediaInfoModel;
 @interface MoviePlayerViewController : UIViewController
+
+
+@property (nonatomic ,strong) HLLMediaInfoModel * mediaInfo;
 
 @end

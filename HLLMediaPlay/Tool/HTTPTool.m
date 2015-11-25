@@ -23,18 +23,41 @@
 	return manager;
 }
 
++ (void)requestJXVDYMediaInfoWithID:(NSString *)ID successedBlock:(SuccessBlock)success andFialedBlock:(FailBlock)fail{
+
+    AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
+    
+    NSDictionary *parameters = @{@"id":ID,
+                                 @"token":JXVDYToken};
+    
+    [manager GET:URL_Get_JXVDY_Media_Info parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation,responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(operation,error);
+    }];
+
+}
++ (void) requestJXVDYMediaSourceWithKeyword:(NSString *)keyWord offset:(NSString *)offset successedBlock:(SuccessBlock)success andFialedBlock:(FailBlock)fail{
+
+    AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
+    
+    NSDictionary *parameters = @{@"keyword":keyWord,
+                                 @"count":@"10",
+                                 @"offset":offset,
+                                 @"model":@"video",
+                                 @"token":JXVDYToken};
+
+    [manager GET:URL_Get_Search_JXVDY_Media_Info parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation,responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(operation,error);
+    }];
+}
 
 + (void) requestSearchMediaInfoWithKeyWord:(NSString *)keyWord successedBlock:(SuccessBlock)success andFailedBlock:(FailBlock)fail{
 
     AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
-//#ifdef Youku_Tudou
-//    NSDictionary * parameters = @{@"method":@"item.search",
-//                            @"kw":keyWord,
-//                            @"inDays":@"7",
-//                            @"ttlevel":@"m",
-//                            @"sort":@"t",
-//                            @"media":@"v"};
-//#else
+
     NSDictionary *parameters = @{@"keyword":keyWord,
                                  @"client_id":Youku_Client_id,
                                  @"period":@"month",
@@ -42,7 +65,7 @@
                                  @"paid":@"0",
                                  @"public_type":@"all",
                                  @"timeless":@"60"};
-//#endif
+    
     [manager GET:URL_Get_Search_Media_Info parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

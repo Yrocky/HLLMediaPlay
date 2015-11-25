@@ -9,13 +9,13 @@
 #import "HLLOnlineController.h"
 #import "HLLMediaModel.h"
 #import "HLLOnlineCell.h"
-#import "HLLPlayViewController.h"
+#import "HLLOnlinePlayViewController.h"
+#import "HTTPTool.h"
+#import "MJRefreshBackNormalFooter.h"
 
-
-
-@interface HLLOnlineController ()
+@interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
-
+@property (nonatomic ,assign) int offset;
 @end
 
 @implementation HLLOnlineController
@@ -31,16 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"mediaSource" ofType:@"json"];
-    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString * keyword = @"恐怖故事";
     
-    NSArray * medias = [dict objectForKey:@"Data"];
-    for (NSDictionary * media in medias) {
-        HLLMediaModel * model = [[HLLMediaModel alloc] init];
-        [model setValuesForKeysWithDictionary:media];
-        [self.onlineMedias addObject:model];
-    }
-    [self.tableView reloadData];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
+    [self searchKeyword:keyword loadMore:NO];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,18 +44,15 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSString * identifier = segue.identifier;
-    if ([identifier isEqualToString:@"play"]) {
-        HLLPlayViewController * playViewController = segue.destinationViewController;
+    if ([identifier isEqualToString:@"onlinePlay"]) {
+        HLLOnlinePlayViewController * playViewController = segue.destinationViewController;
         playViewController.model = sender;
     }
 }
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -81,48 +74,31 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    [self.view endEditing:YES];
+}
+
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //    HLLSearchMediaModel * model = self.searchResuletMArray[indexPath.row];
+    
     HLLMediaModel * model = self.onlineMedias[indexPath.row];
-    [self performSegueWithIdentifier:@"play" sender:model];
+    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    [self.view endEditing:YES];
+    NSString * searchInfo = searchBar.text;
+    
+    [self.onlineMedias removeAllObjects];
+    [self.tableView reloadData];
+    
+    [self searchKeyword:searchInfo loadMore:NO];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 /*
 #pragma mark - Navigation
 
@@ -132,5 +108,30 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void) loadMoreData{
+    NSString * keyword = @"恐怖故事";
+    [self searchKeyword:keyword loadMore:YES];
+}
+- (void) searchKeyword:(NSString *)keyWord loadMore:(BOOL)loadMore{
+    
+    if (loadMore) {
+        _offset++;
+    }
+    NSString * offset = [NSString stringWithFormat:@"%d",_offset];
+    
+    [HTTPTool requestJXVDYMediaSourceWithKeyword:keyWord offset:offset successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"result:%@",responseObject);
+        for (NSDictionary *dict in responseObject) {
+            HLLMediaModel * model = [[HLLMediaModel alloc] initWithDict:dict];
+            NSLog(@"%@",dict[@"time"]);
+            [self.onlineMedias addObject:model];
+        }
+        [self.tableView reloadData];
+    } andFialedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"fail:%@",error.localizedDescription);
+    }];
+}
 
 @end

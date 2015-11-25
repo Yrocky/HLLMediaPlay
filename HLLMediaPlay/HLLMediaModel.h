@@ -7,18 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HLLClass.h"
 
-@interface HLLMediaModel : NSObject
+@interface HLLMediaModel : HLLClass
 
-@property (nonatomic ,copy) NSString * url;
-@property (nonatomic ,copy) NSString * name;
-@property (nonatomic ,copy) NSString * image;
-@property (nonatomic ,copy) NSString * duration;
+@property (nonatomic ,copy) NSString * ID;
+@property (nonatomic ,copy) NSString * img;
+@property (nonatomic ,copy) NSString * score;
+@property (nonatomic ,assign) NSTimeInterval time;
+@property (nonatomic ,copy) NSString * title;
+@property (nonatomic ,copy) NSString * mediaDescription;
+
 
 @end
 /*
- "url" : "http:\/\/7xawdc.com2.z0.glb.qiniucdn.com\/o_19p6vdmi9148s16fs1ptehbm1vd59.mp4",
- "name" : "01",
- "image" : "http:\/\/photo.candou.com\/i\/114\/85501cb8b5bef97379498c6f780edb86",
- "duration" : "06:43"
+
+ description = "\U300a\U6211\U53ef\U80fd\U4e0d\U4f1a\U7231\U4f60\U300b\U756a\U5916";
+ id = 33106;
+ img = "http://image.jxvdy.com/2015/1122/56519440cee1ff3ccdd27_0.jpg";
+ score = "8.0";
+ time = 1448187074;
+ title = "\U4ece\U5fc3\U53d1\U73b0\U7231";
  */

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *snipImageView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 
@@ -22,9 +23,12 @@
 
 - (void) configureCellWithMediaModel:(HLLMediaModel *)model{
 
-    self.nameLabel.text = model.name;
-    self.timeLabel.text = model.duration;
-    NSURL * url = [NSURL URLWithString:model.image];
+    self.nameLabel.text = model.title;
+    self.descriptionLabel.text = model.mediaDescription;
+    
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:model.time];
+    self.timeLabel.text = date.description;
+    NSURL * url = [NSURL URLWithString:model.img];
     [self.snipImageView sd_setImageWithURL:url
                             placeholderImage:[UIImage imageNamed:@"load"]];
     

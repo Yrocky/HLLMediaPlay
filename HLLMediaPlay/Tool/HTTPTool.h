@@ -12,11 +12,14 @@
 
 // 获取关键字搜索视频内容结果
 
-//#define URL_Get_Search_Media_Info @"//http://api.tudou.com/v3/gw"
-
-
+// 金象
+#define URL_Get_Search_JXVDY_Media_Info @"http://api2.jxvdy.com/search_list"
+#define URL_Get_JXVDY_Media_Info @"http://api2.jxvdy.com/video_info"
+// youku
 #define URL_Get_Search_Media_Info @"https://openapi.youku.com/v2/searches/video/by_keyword.json"
 
+// 金象微电影的token
+#define JXVDYToken @"gDATiGWi8G1HPXi_-r3TORzC7Igp6_OzlXoaB6-oQ-gbmfjYlPSY1HHMu0Wglnexr6cuX8ikaw"
 
 // youku云app的client_id
 #define Youku_Client_id @"920e518867b95b70"
@@ -30,4 +33,8 @@ typedef void(^SuccessBlock) (AFHTTPRequestOperation *operation, id responseObjec
 typedef void(^FailBlock) (AFHTTPRequestOperation *operation, NSError *error);
 
 + (void) requestSearchMediaInfoWithKeyWord:(NSString *)keyWord successedBlock:(SuccessBlock)success andFailedBlock:(FailBlock)fail;
+
++ (void) requestJXVDYMediaSourceWithKeyword:(NSString *)keyWord offset:(NSString *)offset successedBlock:(SuccessBlock)success andFialedBlock:(FailBlock)fail;
+
++ (void) requestJXVDYMediaInfoWithID:(NSString *)ID successedBlock:(SuccessBlock)success andFialedBlock:(FailBlock)fail;
 @end
