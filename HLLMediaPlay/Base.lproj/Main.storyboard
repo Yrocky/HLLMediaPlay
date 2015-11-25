@@ -53,9 +53,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="本地" id="4XH-AE-giw">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="pKK-op-IUI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="W1g-8r-Ex6">
                             <connections>
-                                <action selector="mainViewContoller_ShowDediaData:" destination="BYZ-38-t0r" id="Y3D-af-Tl7"/>
+                                <action selector="mainViewController_EditMedia:" destination="BYZ-38-t0r" id="JWS-MS-rh9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="pKK-op-IUI">
+                            <connections>
+                                <action selector="mainViewContoller_ClearMediaData:" destination="BYZ-38-t0r" id="BkQ-Ev-ebK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -257,6 +262,17 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm9-dL-hdU">
+                                            <rect key="frame" x="30" y="35" width="33" height="16"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="6H4-KD-hU5"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="QPs-gr-Snh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j1z-b7-vdX">
                                             <rect key="frame" x="455" y="5" width="135" height="189"/>
                                             <animations/>
@@ -272,17 +288,6 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm9-dL-hdU">
-                                            <rect key="frame" x="30" y="35" width="33" height="16"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="6H4-KD-hU5"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="QPs-gr-Snh"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>

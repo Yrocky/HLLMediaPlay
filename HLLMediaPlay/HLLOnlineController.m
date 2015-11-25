@@ -124,7 +124,6 @@
         NSLog(@"result:%@",responseObject);
         for (NSDictionary *dict in responseObject) {
             HLLMediaModel * model = [[HLLMediaModel alloc] initWithDict:dict];
-            NSLog(@"%@",dict[@"time"]);
             [self.onlineMedias addObject:model];
         }
         [self.tableView reloadData];

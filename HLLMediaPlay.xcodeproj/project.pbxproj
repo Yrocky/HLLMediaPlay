@@ -29,6 +29,9 @@
 		84FC25651C054706004F7EA7 /* HLLClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25641C054706004F7EA7 /* HLLClass.m */; };
 		84FC25681C054E4B004F7EA7 /* HLLOnlinePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25671C054E4B004F7EA7 /* HLLOnlinePlayViewController.m */; };
 		84FC256B1C0551F5004F7EA7 /* HLLMediaInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC256A1C0551F5004F7EA7 /* HLLMediaInfoModel.m */; };
+		84FC25711C059DA6004F7EA7 /* HLLDowloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC256F1C059DA6004F7EA7 /* HLLDowloadCell.m */; };
+		84FC25721C059DA6004F7EA7 /* HLLDowloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */; };
+		84FC25761C059FE2004F7EA7 /* PlistHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25751C059FE2004F7EA7 /* PlistHandle.m */; };
 		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
 		D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */ = {isa = PBXBuildFile; fileRef = D7DDC8301C0493FF002315A5 /* mediaSource.json */; };
 		D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */; };
@@ -95,6 +98,11 @@
 		84FC25671C054E4B004F7EA7 /* HLLOnlinePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLOnlinePlayViewController.m; sourceTree = "<group>"; };
 		84FC25691C0551F5004F7EA7 /* HLLMediaInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLMediaInfoModel.h; sourceTree = "<group>"; };
 		84FC256A1C0551F5004F7EA7 /* HLLMediaInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLMediaInfoModel.m; sourceTree = "<group>"; };
+		84FC256E1C059DA6004F7EA7 /* HLLDowloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLDowloadCell.h; sourceTree = "<group>"; };
+		84FC256F1C059DA6004F7EA7 /* HLLDowloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLDowloadCell.m; sourceTree = "<group>"; };
+		84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HLLDowloadCell.xib; sourceTree = "<group>"; };
+		84FC25741C059FE2004F7EA7 /* PlistHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistHandle.h; sourceTree = "<group>"; };
+		84FC25751C059FE2004F7EA7 /* PlistHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistHandle.m; sourceTree = "<group>"; };
 		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
 		D7DDC8301C0493FF002315A5 /* mediaSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mediaSource.json; sourceTree = "<group>"; };
 		D7DDC8321C049CEA002315A5 /* HLLMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLMediaModel.h; sourceTree = "<group>"; };
@@ -181,11 +189,10 @@
 		84DA1DC31C02E5DA00669B7D /* HLLMediaPlay */ = {
 			isa = PBXGroup;
 			children = (
-				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
 				84DA1DC71C02E5DA00669B7D /* AppDelegate.h */,
 				84DA1DC81C02E5DA00669B7D /* AppDelegate.m */,
-				84DA1DCA1C02E5DA00669B7D /* ViewController.h */,
-				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
+				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
+				84FC25731C059F82004F7EA7 /* local */,
 				84FC256C1C058254004F7EA7 /* youku */,
 				84FC256D1C058263004F7EA7 /* jxvdy */,
 				84FC24FB1C030D09004F7EA7 /* view */,
@@ -230,6 +237,8 @@
 		84FC24F01C02FE92004F7EA7 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				84FC25741C059FE2004F7EA7 /* PlistHandle.h */,
+				84FC25751C059FE2004F7EA7 /* PlistHandle.m */,
 				84FC24ED1C02F861004F7EA7 /* HTTPTool.h */,
 				84FC24EE1C02F861004F7EA7 /* HTTPTool.m */,
 			);
@@ -258,6 +267,9 @@
 				84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */,
 				D7DDC8381C04A34A002315A5 /* HLLOnlineCell.h */,
 				D7DDC8391C04A34A002315A5 /* HLLOnlineCell.m */,
+				84FC256E1C059DA6004F7EA7 /* HLLDowloadCell.h */,
+				84FC256F1C059DA6004F7EA7 /* HLLDowloadCell.m */,
+				84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -284,6 +296,15 @@
 				84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */,
 			);
 			name = jxvdy;
+			sourceTree = "<group>";
+		};
+		84FC25731C059F82004F7EA7 /* local */ = {
+			isa = PBXGroup;
+			children = (
+				84DA1DCA1C02E5DA00669B7D /* ViewController.h */,
+				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
+			);
+			name = local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +422,7 @@
 				D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */,
 				84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */,
 				84DA1DCF1C02E5DA00669B7D /* Main.storyboard in Resources */,
+				84FC25721C059DA6004F7EA7 /* HLLDowloadCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,11 +500,13 @@
 				84FC24F71C030B7E004F7EA7 /* HLLSearchController.m in Sources */,
 				84FC24FA1C030D04004F7EA7 /* HLLSearchCell.m in Sources */,
 				84FC24F31C02FEC2004F7EA7 /* HLLSearchMediaModel.m in Sources */,
+				84FC25711C059DA6004F7EA7 /* HLLDowloadCell.m in Sources */,
 				84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */,
 				84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */,
 				84FC25601C0449A5004F7EA7 /* MoviePlayerViewController.m in Sources */,
 				D7DDC83A1C04A34A002315A5 /* HLLOnlineCell.m in Sources */,
 				84DA1DC61C02E5DA00669B7D /* main.m in Sources */,
+				84FC25761C059FE2004F7EA7 /* PlistHandle.m in Sources */,
 				D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */,
 				84FC24EF1C02F861004F7EA7 /* HTTPTool.m in Sources */,
 				84FC25551C041C7D004F7EA7 /* HLLPlayViewController.m in Sources */,
@@ -578,7 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -616,7 +640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

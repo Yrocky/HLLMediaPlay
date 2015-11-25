@@ -7,12 +7,15 @@
 //
 
 #import "ViewController.h"
-#import "HTTPTool.h"
 #import "HLLSearchMediaModel.h"
+#import "HLLDowloadCell.h"
+#import "PlistHandle.h"
+#import "HTTPTool.h"
+#import <MediaPlayer/MPMoviePlayerViewController.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+
 @property (weak, nonatomic) IBOutlet UILabel *alertLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -30,25 +33,59 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.tableView.hidden = YES;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    NSURL * url  = [NSURL URLWithString:@"http://objccn.io/content/images/2014/Dec/6746362.png"];
-    [self.image sd_setImageWithURL:url];
-}
-- (IBAction)mainViewContoller_ShowDediaData:(id)sender {
     
-    [self.medias addObject:@"as"];
+    [self.tableView registerNib:[HLLDowloadCell nib] forCellReuseIdentifier:[HLLDowloadCell identifier]];
+    
+}
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+    
+    NSArray * medias = [[PlistHandle sharedPlistHandle] getDataWithPlistName:@"dowload"];
+    
+    [self.medias removeAllObjects];
+    for (NSDictionary * media in medias) {
+        
+        HLLDowloadModel * model = [[HLLDowloadModel alloc] initWithDict:media];
+        [self.medias addObject:model];
+    }
+    
     [self.tableView reloadData];
+    
+    if (self.medias.count) {
+        self.tableView.hidden = NO;
+    }else{
+        self.tableView.hidden = YES;
+    }
+}
+- (IBAction)mainViewContoller_ClearMediaData:(id)sender {
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要清空缓存视频么" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        for (NSInteger index; index < self.medias.count; index ++) {
+
+            NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+            [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:indexPath];
+        }
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:sureAction];
+
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)mainViewController_EditMedia:(id)sender {
+    
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
 }
 #pragma mark - UITableViewDataSource
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    HLLDowloadCell * cell = [tableView dequeueReusableCellWithIdentifier:[HLLDowloadCell identifier] forIndexPath:indexPath];
+    
+    HLLDowloadModel * model = self.medias[indexPath.row];
+    [cell configureCellWithModel:model];
     
     return cell;
 }
@@ -56,16 +93,54 @@
 
     return self.medias.count;
 }
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return YES;
+
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        HLLDowloadModel * model = self.medias[indexPath.row];
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        NSString * path = [NSString stringWithFormat:@"%@/%@",documentsDirectoryURL,model.path];
+        BOOL removeResult = [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        
+        [[PlistHandle sharedPlistHandle] removeDataWithPlistName:@"dowload" withDataID:[NSString stringWithFormat:@"%@",model.ID]];
+        [self.medias removeObject:model];
+        NSLog(@"%d",removeResult);
+    }
+    [tableView reloadData];
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return UITableViewCellEditingStyleDelete;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    return @"删除";
+}
+
 #pragma mark - UITableViewDelegate
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 88.0f;
+}
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    NSLog(@"选择一个本地视频播放");
-}
-#pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    HLLDowloadModel * model = self.medias[indexPath.row];
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    
+    NSString * path = [NSString stringWithFormat:@"%@/%@",documentsDirectoryURL,model.path];
+    NSURL * url = [documentsDirectoryURL URLByAppendingPathComponent:path];
+    
+
+    MPMoviePlayerViewController *playerViewController =[[MPMoviePlayerViewController alloc]initWithContentURL:url];
+    [self presentMoviePlayerViewControllerAnimated:playerViewController];
 }
 
 @end

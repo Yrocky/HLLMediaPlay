@@ -8,10 +8,12 @@
 
 #import "HLLOnlinePlayViewController.h"
 #import "MoviePlayerViewController.h"
-#import "HLLMediaModel.h"
-#import "HTTPTool.h"
 #import "HLLMediaInfoModel.h"
+#import "HLLMediaModel.h"
+#import "PlistHandle.h"
+#import "HTTPTool.h"
 #import "Masonry.h"
+
 
 @interface HLLOnlinePlayViewController ()
 @property (nonatomic ,strong) HLLMediaInfoModel * mediaInfoModel;
@@ -40,7 +42,8 @@
     
     [_downloadTask cancel];
 }
-- (void) downloadTaskWithUrlString:(NSString *)urlString fileName:(NSString *)fileName{
+
+- (void) downloadTaskWithUrlString:(NSString *)urlString fileName:(NSString *)fileName imageUrl:(NSString *)imageUrl description:(NSString *)description ID:(NSString *)ID{
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -52,6 +55,13 @@
         
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
         NSString * filePath = [NSString stringWithFormat:@"%@.mp4",fileName];
+        NSDictionary * dict = @{@"ID":ID,
+                                @"name":fileName,
+                                @"image":imageUrl,
+                                @"path":filePath,
+                                @"description":description};
+        
+        [[PlistHandle sharedPlistHandle] writerDataWithPlistName:@"dowload" ID:ID withDict:dict];
         
         return [documentsDirectoryURL URLByAppendingPathComponent:filePath];
         
@@ -67,7 +77,6 @@
     [downloadTask resume];
     _downloadTask = downloadTask;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -95,7 +104,12 @@
         NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
         NSString * lowP = self.mediaInfoModel.playurl[@"360P"];
         playurl = highP ? highP:(middleP?middleP:lowP);
-        [self downloadTaskWithUrlString:playurl fileName:self.model.title];
+        
+        [self downloadTaskWithUrlString:playurl
+                               fileName:self.model.title
+                               imageUrl:self.model.img
+                            description:responseObject[@"description"]
+                                     ID:[NSString stringWithFormat:@"%@",responseObject[@"pubid"]]];
         
         MoviePlayerViewController * moviePlayerViewController = [[MoviePlayerViewController alloc] init];
         //    moviePlayerViewController.view.backgroundColor = [UIColor orangeColor];
@@ -110,4 +124,5 @@
         NSLog(@"fail:%@",error.localizedDescription);
     }];
 }
+
 @end
