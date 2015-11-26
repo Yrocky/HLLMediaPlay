@@ -15,6 +15,7 @@
 @property (nonatomic ,copy) NSString * mediaDescription;
 @property (nonatomic ,copy) NSString * introduction;
 @property (nonatomic ,copy) NSString * mycollect;
+@property (nonatomic ,copy) NSString * score;
 @property (nonatomic ,copy) NSString * pubface;
 @property (nonatomic ,copy) NSString * pubid;
 @property (nonatomic ,copy) NSString * pubnick;

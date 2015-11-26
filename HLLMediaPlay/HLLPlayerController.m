@@ -9,7 +9,7 @@
 #import "HLLPlayerController.h"
 
 #import "YFViewPager.h"
-
+#import "UINavigationController+FDFullscreenPopGesture.h"
 #import "FMGVideoPlayView.h"
 #import "FullViewController.h"
 
@@ -34,9 +34,12 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle= UIStatusBarStyleDefault;
-    
     [self setupVideoPlayView];
-    
+    self.fd_prefersNavigationBarHidden = YES;
+}
+-(BOOL)hidesBottomBarWhenPushed
+{
+    return YES;
 }
 - (void)setupVideoPlayView
 {
@@ -45,7 +48,7 @@
     // 视频资源路径
     [playView setUrlString:self.Hls_url];
     // 播放器显示位置（竖屏时）
-    playView.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.width * 9 / 16);
+    playView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width * 9 / 16);
     // 添加到当前控制器的view上
     [self.view addSubview:playView];
     

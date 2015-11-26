@@ -12,6 +12,6 @@
 
 - (NSDictionary *)propertyMapDic{
 
-    return @{@"mediaDescription":@"description"};
+    return @{@"description":@"mediaDescription"};
 }
 @end

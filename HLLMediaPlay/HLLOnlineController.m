@@ -86,15 +86,9 @@
     HLLMediaModel * model = self.onlineMedias[indexPath.row];
 
     
-    [self sfdsgWithID:model.ID];
-    
-    return;
-    MoviePlayerViewController * moviePlayerController = [[MoviePlayerViewController alloc] init];
-//    moviePlayerController.mediaInfo = 
-//    HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
-//    playerController.Hls_url = model.ID;
-    [self.navigationController pushViewController:moviePlayerController animated:YES];
-//    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
+//    [self sfdsgWithID:model.ID];
+//    return;
+    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
 }
 
 - (void) sfdsgWithID:(NSString *)ID{
