@@ -9,11 +9,13 @@
 #import "HLLOnlineController.h"
 #import "HLLOnlinePlayViewController.h"
 #import "MJRefreshBackNormalFooter.h"
+#import "MoviePlayerViewController.h"
 #import "HLLPlayerController.h"
 #import "HLLMediaModel.h"
 #import "HLLOnlineCell.h"
 #import "HTTPTool.h"
 
+#import "HLLPlayerController.h"
 
 @interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
@@ -82,13 +84,41 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     HLLMediaModel * model = self.onlineMedias[indexPath.row];
+
     
+    [self sfdsgWithID:model.ID];
+    
+    return;
+    MoviePlayerViewController * moviePlayerController = [[MoviePlayerViewController alloc] init];
+//    moviePlayerController.mediaInfo = 
 //    HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
 //    playerController.Hls_url = model.ID;
-//    [self.navigationController pushViewController:playerController animated:YES];
-    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
+    [self.navigationController pushViewController:moviePlayerController animated:YES];
+//    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
 }
 
+- (void) sfdsgWithID:(NSString *)ID{
+
+    [HTTPTool requestJXVDYMediaInfoWithID:ID successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"media info result:%@",responseObject);
+
+        NSString * hls_url;
+
+        NSString * highP = responseObject[@"playurl"][@"720P"];
+        NSString * middleP = responseObject[@"playurl"][@"480P"];
+        NSString * lowP = responseObject[@"playurl"][@"360P"];
+        hls_url = highP ? highP:(middleP?middleP:lowP);
+
+        HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
+        playerController.Hls_url = hls_url;
+        [self.navigationController pushViewController:playerController animated:YES];
+        
+    } andFialedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        NSLog(@"fail:%@",error.localizedDescription);
+    }];
+}
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     

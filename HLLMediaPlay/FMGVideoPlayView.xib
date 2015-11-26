@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,12 +13,14 @@
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_media_default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JJP-Ts-JgC">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                    <animations/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="t1N-qu-Mhn" appends="YES" id="VIA-bB-2Kc"/>
                     </connections>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkI-sW-2qy">
                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="F7K-p1-OOf"/>
                         <constraint firstAttribute="height" constant="50" id="Pf2-vA-kxq"/>
@@ -35,6 +37,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BU-1d-DTl">
                             <rect key="frame" x="270" y="0.0" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="HIk-84-ZRo"/>
                             </constraints>
@@ -48,6 +51,7 @@
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_online.png" translatesAutoresizingMaskIntoConstraints="NO" id="KvA-fL-YkX">
                             <rect key="frame" x="10" y="15" width="20" height="20"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="6Lf-cV-wWd"/>
                                 <constraint firstAttribute="width" constant="20" id="Lj8-PX-jT8"/>
@@ -55,12 +59,14 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33.3万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcX-8t-Afn">
                             <rect key="frame" x="32" y="16" width="46" height="18"/>
+                            <animations/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.52000000000000002" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="KvA-fL-YkX" firstAttribute="leading" secondItem="B0Y-G9-Al9" secondAttribute="leading" constant="10" id="1aC-8r-fKd"/>
@@ -78,6 +84,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCU-Uo-9sl">
                     <rect key="frame" x="270" y="0.0" width="50" height="50"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Ttw-bj-Xut"/>
                         <constraint firstAttribute="height" constant="50" id="kdn-m0-bjC"/>
@@ -90,6 +97,7 @@
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JJP-Ts-JgC" secondAttribute="trailing" id="AIy-fi-mPX"/>

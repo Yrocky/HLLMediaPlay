@@ -36,7 +36,6 @@
     [UIApplication sharedApplication].statusBarStyle= UIStatusBarStyleDefault;
     
     [self setupVideoPlayView];
-    [self initViewPager];
     
 }
 - (void)setupVideoPlayView
