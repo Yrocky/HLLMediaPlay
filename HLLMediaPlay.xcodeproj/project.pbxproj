@@ -191,18 +191,13 @@
 			children = (
 				84DA1DC71C02E5DA00669B7D /* AppDelegate.h */,
 				84DA1DC81C02E5DA00669B7D /* AppDelegate.m */,
-				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
 				84FC25731C059F82004F7EA7 /* local */,
 				84FC256C1C058254004F7EA7 /* youku */,
 				84FC256D1C058263004F7EA7 /* jxvdy */,
 				84FC24FB1C030D09004F7EA7 /* view */,
 				84FC24F41C02FECC004F7EA7 /* model */,
 				84FC24F01C02FE92004F7EA7 /* tool */,
-				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
-				84FC25611C0458EF004F7EA7 /* lunch.jpg */,
-				D7DDC8301C0493FF002315A5 /* mediaSource.json */,
-				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
-				84DA1DD51C02E5DA00669B7D /* Info.plist */,
+				D7DDC83D1C05F2DB002315A5 /* source */,
 				84DA1DC41C02E5DA00669B7D /* Supporting Files */,
 			);
 			path = HLLMediaPlay;
@@ -305,6 +300,19 @@
 				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
 			);
 			name = local;
+			sourceTree = "<group>";
+		};
+		D7DDC83D1C05F2DB002315A5 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
+				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
+				84FC25611C0458EF004F7EA7 /* lunch.jpg */,
+				D7DDC8301C0493FF002315A5 /* mediaSource.json */,
+				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
+				84DA1DD51C02E5DA00669B7D /* Info.plist */,
+			);
+			name = source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

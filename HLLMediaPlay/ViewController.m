@@ -11,10 +11,15 @@
 #import "HLLDowloadCell.h"
 #import "PlistHandle.h"
 #import "HTTPTool.h"
-#import <MediaPlayer/MPMoviePlayerViewController.h>
+
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
+
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editBarButtonItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *alertLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -51,11 +56,18 @@
     }
     
     [self.tableView reloadData];
-    
+
+    [self barButtonItemEnabledHandle];
+}
+- (void) barButtonItemEnabledHandle{
+
     if (self.medias.count) {
         self.tableView.hidden = NO;
+        self.trashBarButtonItem.enabled = self.editBarButtonItem.enabled = YES;
     }else{
         self.tableView.hidden = YES;
+        [self.tableView setEditing:NO animated:YES];
+        self.trashBarButtonItem.enabled = self.editBarButtonItem.enabled = NO;
     }
 }
 - (IBAction)mainViewContoller_ClearMediaData:(id)sender {
@@ -112,6 +124,8 @@
         NSLog(@"%d",removeResult);
     }
     [tableView reloadData];
+
+    [self barButtonItemEnabledHandle];
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -133,14 +147,17 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     HLLDowloadModel * model = self.medias[indexPath.row];
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     
-    NSString * path = [NSString stringWithFormat:@"%@/%@",documentsDirectoryURL,model.path];
-    NSURL * url = [documentsDirectoryURL URLByAppendingPathComponent:path];
+    NSString * docmentUrl = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     
-
-    MPMoviePlayerViewController *playerViewController =[[MPMoviePlayerViewController alloc]initWithContentURL:url];
-    [self presentMoviePlayerViewControllerAnimated:playerViewController];
+    NSString * path = [NSString stringWithFormat:@"%@/%@",docmentUrl,model.path];
+    NSURL * url = [NSURL URLWithString:path];
+    
+    AVPlayerViewController * playerViewController = [[AVPlayerViewController alloc] init];
+    AVPlayerItem * playerItem = [AVPlayerItem playerItemWithURL:url];
+    AVPlayer * player = [AVPlayer playerWithPlayerItem:playerItem];
+    playerViewController.player = player;
+    [self presentViewController:playerViewController animated:YES completion:nil];
 }
 
 @end
