@@ -1,0 +1,34 @@
+1.有关视频播放的时候Url的问题
+
+在使用AVKit和AVFunction替换MediaPlayer的时候使用
+
+
+视频path为：
+	/Users/admin/Library/Developer/CoreSimulator/Devices/541CB7E9-C73E-406D-9A2C-EE2EE3E5FDE3/data/Containers/Data/Application/501AE13F-4B3E-484E-90CC-08FE09C41484/Library/Private_Documents/Cache/空中探戈.mp4
+获得到视频path之后转换成url结果为：
+	file:///Users/admin/Library/Developer/CoreSimulator/Devices/541CB7E9-C73E-406D-9A2C-EE2EE3E5FDE3/data/Containers/Data/Application/501AE13F-4B3E-484E-90CC-08FE09C41484/Library/Private_Documents/Cache/%E7%A9%BA%E4%B8%AD%E6%8E%A2%E6%88%88.mp4
+
+使用MPMoviePlayerViewController可以使用url进行视频播放
+但是使用AVPlayerViewController就不能使用url进行视频的播放
+
+这是怎么回事呢，要知道在iOS9之后就不能使用MP框架下的东西了，推荐使用的是AV里面的东西
+
+
+使用MP的代码如下：
+	MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:mediaUrl];
+    [self presentMoviePlayerViewControllerAnimated:playerViewController];
+
+使用AV的代码如下：
+
+	AVPlayerViewController * playerViewController = [[AVPlayerViewController alloc] init];
+    AVPlayerItem * playerItem = [AVPlayerItem playerItemWithURL:mediaUrl];
+    AVPlayer * player = [AVPlayer playerWithPlayerItem:playerItem];
+    playerViewController.player = player;
+    [self presentViewController:playerViewController animated:YES completion:nil];
+
+
+
+2.关于plist和视频的缓存地址
+
+	有关本地视频记录的plist地址为Docment
+	而视频缓存地址为Library下的Private_Documents下

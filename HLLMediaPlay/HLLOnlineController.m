@@ -7,11 +7,15 @@
 //
 
 #import "HLLOnlineController.h"
+#import "HLLOnlinePlayViewController.h"
+#import "MJRefreshBackNormalFooter.h"
+#import "MoviePlayerViewController.h"
+#import "HLLPlayerController.h"
 #import "HLLMediaModel.h"
 #import "HLLOnlineCell.h"
-#import "HLLOnlinePlayViewController.h"
 #import "HTTPTool.h"
-#import "MJRefreshBackNormalFooter.h"
+
+#import "HLLPlayerController.h"
 
 @interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
@@ -37,11 +41,6 @@
 
     [self searchKeyword:keyword loadMore:NO];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -85,9 +84,41 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     HLLMediaModel * model = self.onlineMedias[indexPath.row];
-    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
+
+    
+    [self sfdsgWithID:model.ID];
+    
+    return;
+    MoviePlayerViewController * moviePlayerController = [[MoviePlayerViewController alloc] init];
+//    moviePlayerController.mediaInfo = 
+//    HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
+//    playerController.Hls_url = model.ID;
+    [self.navigationController pushViewController:moviePlayerController animated:YES];
+//    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
 }
 
+- (void) sfdsgWithID:(NSString *)ID{
+
+    [HTTPTool requestJXVDYMediaInfoWithID:ID successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"media info result:%@",responseObject);
+
+        NSString * hls_url;
+
+        NSString * highP = responseObject[@"playurl"][@"720P"];
+        NSString * middleP = responseObject[@"playurl"][@"480P"];
+        NSString * lowP = responseObject[@"playurl"][@"360P"];
+        hls_url = highP ? highP:(middleP?middleP:lowP);
+
+        HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
+        playerController.Hls_url = hls_url;
+        [self.navigationController pushViewController:playerController animated:YES];
+        
+    } andFialedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        NSLog(@"fail:%@",error.localizedDescription);
+    }];
+}
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     
@@ -99,15 +130,6 @@
     
     [self searchKeyword:searchInfo loadMore:NO];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void) loadMoreData{
     NSString * keyword = @"恐怖故事";
     [self searchKeyword:keyword loadMore:YES];

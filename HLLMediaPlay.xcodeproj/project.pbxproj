@@ -32,6 +32,16 @@
 		84FC25711C059DA6004F7EA7 /* HLLDowloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC256F1C059DA6004F7EA7 /* HLLDowloadCell.m */; };
 		84FC25721C059DA6004F7EA7 /* HLLDowloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */; };
 		84FC25761C059FE2004F7EA7 /* PlistHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25751C059FE2004F7EA7 /* PlistHandle.m */; };
+		84FC25811C06AE43004F7EA7 /* FileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25801C06AE43004F7EA7 /* FileHandle.m */; };
+		84FC25841C06D947004F7EA7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25821C06D947004F7EA7 /* icon@2x.png */; };
+		84FC25851C06D947004F7EA7 /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25831C06D947004F7EA7 /* icon@3x.png */; };
+		84FC258C1C06ECA0004F7EA7 /* YFViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC258B1C06ECA0004F7EA7 /* YFViewPager.m */; };
+		84FC25931C06EFF7004F7EA7 /* HLLPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25921C06EFF7004F7EA7 /* HLLPlayerController.m */; };
+		84FC25A61C06F260004F7EA7 /* FMGVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25A01C06F260004F7EA7 /* FMGVideoPlayView.m */; };
+		84FC25A71C06F260004F7EA7 /* FMGVideoPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25A11C06F260004F7EA7 /* FMGVideoPlayView.xib */; };
+		84FC25A81C06F260004F7EA7 /* FullView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25A31C06F260004F7EA7 /* FullView.m */; };
+		84FC25A91C06F260004F7EA7 /* FullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25A51C06F260004F7EA7 /* FullViewController.m */; };
+		84FC25AC1C070498004F7EA7 /* HLLMoviePlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25AB1C070498004F7EA7 /* HLLMoviePlayerController.m */; };
 		D22A0E46902D8CC59D3BD7C2 /* libPods-HLLMediaPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */; };
 		D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */ = {isa = PBXBuildFile; fileRef = D7DDC8301C0493FF002315A5 /* mediaSource.json */; };
 		D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */; };
@@ -103,6 +113,23 @@
 		84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HLLDowloadCell.xib; sourceTree = "<group>"; };
 		84FC25741C059FE2004F7EA7 /* PlistHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistHandle.h; sourceTree = "<group>"; };
 		84FC25751C059FE2004F7EA7 /* PlistHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistHandle.m; sourceTree = "<group>"; };
+		84FC257F1C06AE43004F7EA7 /* FileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHandle.h; sourceTree = "<group>"; };
+		84FC25801C06AE43004F7EA7 /* FileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandle.m; sourceTree = "<group>"; };
+		84FC25821C06D947004F7EA7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		84FC25831C06D947004F7EA7 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
+		84FC258A1C06ECA0004F7EA7 /* YFViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFViewPager.h; sourceTree = "<group>"; };
+		84FC258B1C06ECA0004F7EA7 /* YFViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFViewPager.m; sourceTree = "<group>"; };
+		84FC25911C06EFF7004F7EA7 /* HLLPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLPlayerController.h; sourceTree = "<group>"; };
+		84FC25921C06EFF7004F7EA7 /* HLLPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLPlayerController.m; sourceTree = "<group>"; };
+		84FC259F1C06F260004F7EA7 /* FMGVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGVideoPlayView.h; sourceTree = "<group>"; };
+		84FC25A01C06F260004F7EA7 /* FMGVideoPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGVideoPlayView.m; sourceTree = "<group>"; };
+		84FC25A11C06F260004F7EA7 /* FMGVideoPlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMGVideoPlayView.xib; sourceTree = "<group>"; };
+		84FC25A21C06F260004F7EA7 /* FullView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullView.h; sourceTree = "<group>"; };
+		84FC25A31C06F260004F7EA7 /* FullView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullView.m; sourceTree = "<group>"; };
+		84FC25A41C06F260004F7EA7 /* FullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullViewController.h; sourceTree = "<group>"; };
+		84FC25A51C06F260004F7EA7 /* FullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullViewController.m; sourceTree = "<group>"; };
+		84FC25AA1C070498004F7EA7 /* HLLMoviePlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLMoviePlayerController.h; sourceTree = "<group>"; };
+		84FC25AB1C070498004F7EA7 /* HLLMoviePlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLMoviePlayerController.m; sourceTree = "<group>"; };
 		C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.release.xcconfig"; sourceTree = "<group>"; };
 		D7DDC8301C0493FF002315A5 /* mediaSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mediaSource.json; sourceTree = "<group>"; };
 		D7DDC8321C049CEA002315A5 /* HLLMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLMediaModel.h; sourceTree = "<group>"; };
@@ -191,11 +218,11 @@
 			children = (
 				84DA1DC71C02E5DA00669B7D /* AppDelegate.h */,
 				84DA1DC81C02E5DA00669B7D /* AppDelegate.m */,
+				84FC25891C06EC50004F7EA7 /* play */,
 				84FC25731C059F82004F7EA7 /* local */,
 				84FC256C1C058254004F7EA7 /* youku */,
 				84FC256D1C058263004F7EA7 /* jxvdy */,
-				84FC24FB1C030D09004F7EA7 /* view */,
-				84FC24F41C02FECC004F7EA7 /* model */,
+				84FC24F41C02FECC004F7EA7 /* class */,
 				84FC24F01C02FE92004F7EA7 /* tool */,
 				D7DDC83D1C05F2DB002315A5 /* source */,
 				84DA1DC41C02E5DA00669B7D /* Supporting Files */,
@@ -236,37 +263,19 @@
 				84FC25751C059FE2004F7EA7 /* PlistHandle.m */,
 				84FC24ED1C02F861004F7EA7 /* HTTPTool.h */,
 				84FC24EE1C02F861004F7EA7 /* HTTPTool.m */,
+				84FC257F1C06AE43004F7EA7 /* FileHandle.h */,
+				84FC25801C06AE43004F7EA7 /* FileHandle.m */,
 			);
 			name = tool;
 			sourceTree = "<group>";
 		};
-		84FC24F41C02FECC004F7EA7 /* model */ = {
+		84FC24F41C02FECC004F7EA7 /* class */ = {
 			isa = PBXGroup;
 			children = (
 				84FC25631C054706004F7EA7 /* HLLClass.h */,
 				84FC25641C054706004F7EA7 /* HLLClass.m */,
-				84FC24F11C02FEC2004F7EA7 /* HLLSearchMediaModel.h */,
-				84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */,
-				D7DDC8321C049CEA002315A5 /* HLLMediaModel.h */,
-				D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */,
-				84FC25691C0551F5004F7EA7 /* HLLMediaInfoModel.h */,
-				84FC256A1C0551F5004F7EA7 /* HLLMediaInfoModel.m */,
 			);
-			name = model;
-			sourceTree = "<group>";
-		};
-		84FC24FB1C030D09004F7EA7 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				84FC24F81C030D04004F7EA7 /* HLLSearchCell.h */,
-				84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */,
-				D7DDC8381C04A34A002315A5 /* HLLOnlineCell.h */,
-				D7DDC8391C04A34A002315A5 /* HLLOnlineCell.m */,
-				84FC256E1C059DA6004F7EA7 /* HLLDowloadCell.h */,
-				84FC256F1C059DA6004F7EA7 /* HLLDowloadCell.m */,
-				84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */,
-			);
-			name = view;
+			name = class;
 			sourceTree = "<group>";
 		};
 		84FC256C1C058254004F7EA7 /* youku */ = {
@@ -276,6 +285,8 @@
 				84FC24F61C030B7E004F7EA7 /* HLLSearchController.m */,
 				84FC25531C041C7D004F7EA7 /* HLLPlayViewController.h */,
 				84FC25541C041C7D004F7EA7 /* HLLPlayViewController.m */,
+				84FC257A1C069259004F7EA7 /* model */,
+				84FC25791C069249004F7EA7 /* view */,
 			);
 			name = youku;
 			sourceTree = "<group>";
@@ -289,6 +300,8 @@
 				84FC25671C054E4B004F7EA7 /* HLLOnlinePlayViewController.m */,
 				84FC255E1C0449A5004F7EA7 /* MoviePlayerViewController.h */,
 				84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */,
+				84FC257C1C0692A3004F7EA7 /* model */,
+				84FC257B1C069289004F7EA7 /* view */,
 			);
 			name = jxvdy;
 			sourceTree = "<group>";
@@ -298,8 +311,77 @@
 			children = (
 				84DA1DCA1C02E5DA00669B7D /* ViewController.h */,
 				84DA1DCB1C02E5DA00669B7D /* ViewController.m */,
+				84FC25781C069231004F7EA7 /* model&view */,
 			);
 			name = local;
+			sourceTree = "<group>";
+		};
+		84FC25781C069231004F7EA7 /* model&view */ = {
+			isa = PBXGroup;
+			children = (
+				84FC256E1C059DA6004F7EA7 /* HLLDowloadCell.h */,
+				84FC256F1C059DA6004F7EA7 /* HLLDowloadCell.m */,
+				84FC25701C059DA6004F7EA7 /* HLLDowloadCell.xib */,
+			);
+			name = "model&view";
+			sourceTree = "<group>";
+		};
+		84FC25791C069249004F7EA7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				84FC24F81C030D04004F7EA7 /* HLLSearchCell.h */,
+				84FC24F91C030D04004F7EA7 /* HLLSearchCell.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		84FC257A1C069259004F7EA7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				84FC24F11C02FEC2004F7EA7 /* HLLSearchMediaModel.h */,
+				84FC24F21C02FEC2004F7EA7 /* HLLSearchMediaModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		84FC257B1C069289004F7EA7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				D7DDC8381C04A34A002315A5 /* HLLOnlineCell.h */,
+				D7DDC8391C04A34A002315A5 /* HLLOnlineCell.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		84FC257C1C0692A3004F7EA7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D7DDC8321C049CEA002315A5 /* HLLMediaModel.h */,
+				D7DDC8331C049CEA002315A5 /* HLLMediaModel.m */,
+				84FC25691C0551F5004F7EA7 /* HLLMediaInfoModel.h */,
+				84FC256A1C0551F5004F7EA7 /* HLLMediaInfoModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		84FC25891C06EC50004F7EA7 /* play */ = {
+			isa = PBXGroup;
+			children = (
+				84FC25911C06EFF7004F7EA7 /* HLLPlayerController.h */,
+				84FC25921C06EFF7004F7EA7 /* HLLPlayerController.m */,
+				84FC258A1C06ECA0004F7EA7 /* YFViewPager.h */,
+				84FC258B1C06ECA0004F7EA7 /* YFViewPager.m */,
+				84FC259F1C06F260004F7EA7 /* FMGVideoPlayView.h */,
+				84FC25A01C06F260004F7EA7 /* FMGVideoPlayView.m */,
+				84FC25A11C06F260004F7EA7 /* FMGVideoPlayView.xib */,
+				84FC25A21C06F260004F7EA7 /* FullView.h */,
+				84FC25A31C06F260004F7EA7 /* FullView.m */,
+				84FC25A41C06F260004F7EA7 /* FullViewController.h */,
+				84FC25A51C06F260004F7EA7 /* FullViewController.m */,
+				84FC25AA1C070498004F7EA7 /* HLLMoviePlayerController.h */,
+				84FC25AB1C070498004F7EA7 /* HLLMoviePlayerController.m */,
+			);
+			name = play;
 			sourceTree = "<group>";
 		};
 		D7DDC83D1C05F2DB002315A5 /* source */ = {
@@ -307,6 +389,8 @@
 			children = (
 				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
 				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
+				84FC25821C06D947004F7EA7 /* icon@2x.png */,
+				84FC25831C06D947004F7EA7 /* icon@3x.png */,
 				84FC25611C0458EF004F7EA7 /* lunch.jpg */,
 				D7DDC8301C0493FF002315A5 /* mediaSource.json */,
 				84DA1DD21C02E5DA00669B7D /* LaunchScreen.storyboard */,
@@ -425,7 +509,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FC25841C06D947004F7EA7 /* icon@2x.png in Resources */,
 				84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */,
+				84FC25A71C06F260004F7EA7 /* FMGVideoPlayView.xib in Resources */,
+				84FC25851C06D947004F7EA7 /* icon@3x.png in Resources */,
 				84DA1DD11C02E5DA00669B7D /* Assets.xcassets in Resources */,
 				D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */,
 				84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */,
@@ -503,23 +590,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FC25A91C06F260004F7EA7 /* FullViewController.m in Sources */,
 				84FC25681C054E4B004F7EA7 /* HLLOnlinePlayViewController.m in Sources */,
+				84FC25811C06AE43004F7EA7 /* FileHandle.m in Sources */,
 				D7DDC8371C04A18E002315A5 /* HLLOnlineController.m in Sources */,
 				84FC24F71C030B7E004F7EA7 /* HLLSearchController.m in Sources */,
 				84FC24FA1C030D04004F7EA7 /* HLLSearchCell.m in Sources */,
 				84FC24F31C02FEC2004F7EA7 /* HLLSearchMediaModel.m in Sources */,
 				84FC25711C059DA6004F7EA7 /* HLLDowloadCell.m in Sources */,
+				84FC25931C06EFF7004F7EA7 /* HLLPlayerController.m in Sources */,
 				84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */,
 				84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */,
 				84FC25601C0449A5004F7EA7 /* MoviePlayerViewController.m in Sources */,
+				84FC25A61C06F260004F7EA7 /* FMGVideoPlayView.m in Sources */,
 				D7DDC83A1C04A34A002315A5 /* HLLOnlineCell.m in Sources */,
 				84DA1DC61C02E5DA00669B7D /* main.m in Sources */,
 				84FC25761C059FE2004F7EA7 /* PlistHandle.m in Sources */,
 				D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */,
 				84FC24EF1C02F861004F7EA7 /* HTTPTool.m in Sources */,
 				84FC25551C041C7D004F7EA7 /* HLLPlayViewController.m in Sources */,
+				84FC258C1C06ECA0004F7EA7 /* YFViewPager.m in Sources */,
 				84FC256B1C0551F5004F7EA7 /* HLLMediaInfoModel.m in Sources */,
 				84FC25651C054706004F7EA7 /* HLLClass.m in Sources */,
+				84FC25AC1C070498004F7EA7 /* HLLMoviePlayerController.m in Sources */,
+				84FC25A81C06F260004F7EA7 /* FullView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +754,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HLLMediaPlay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HLL.HLLMediaPlay;
@@ -672,7 +765,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HLLMediaPlay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HLL.HLLMediaPlay;

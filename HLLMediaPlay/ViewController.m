@@ -14,6 +14,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import <AVKit/AVKit.h>
 
 
@@ -75,11 +76,18 @@
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要清空缓存视频么" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        for (NSInteger index; index < self.medias.count; index ++) {
-
-            NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-            [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:indexPath];
-        }
+        
+        // 删除plist文件
+        [[PlistHandle sharedPlistHandle] clearDataWithPlistName:@"dowload"];
+        
+        // 删除放视频的文件夹
+        NSFileManager *fileManager=[NSFileManager defaultManager];
+        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
+        [fileManager removeItemAtPath:cachePath error:nil];
+        
+        [self.medias removeAllObjects];
+        [self barButtonItemEnabledHandle];
+        [self.tableView reloadData];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:sureAction];
@@ -87,6 +95,10 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+
+    return UIStatusBarStyleLightContent;
+}
 - (IBAction)mainViewController_EditMedia:(id)sender {
     
     [self.tableView setEditing:!self.tableView.editing animated:YES];
@@ -115,13 +127,17 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         HLLDowloadModel * model = self.medias[indexPath.row];
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        NSString * path = [NSString stringWithFormat:@"%@/%@",documentsDirectoryURL,model.path];
-        BOOL removeResult = [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        NSFileManager *fileManager=[NSFileManager defaultManager];
         
+        // 删除plist文件中的视频缓存记录
         [[PlistHandle sharedPlistHandle] removeDataWithPlistName:@"dowload" withDataID:[NSString stringWithFormat:@"%@",model.ID]];
         [self.medias removeObject:model];
-        NSLog(@"%d",removeResult);
+        
+        // 删除本地缓存的视频
+        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
+        
+        NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",model.name]];
+        [fileManager removeItemAtPath:mediaPath error:nil];
     }
     [tableView reloadData];
 
@@ -148,16 +164,19 @@
     
     HLLDowloadModel * model = self.medias[indexPath.row];
     
-    NSString * docmentUrl = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
     
-    NSString * path = [NSString stringWithFormat:@"%@/%@",docmentUrl,model.path];
-    NSURL * url = [NSURL URLWithString:path];
+    NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",model.name]];
+    NSURL * mediaUrl = [NSURL fileURLWithPath:mediaPath];
     
-    AVPlayerViewController * playerViewController = [[AVPlayerViewController alloc] init];
-    AVPlayerItem * playerItem = [AVPlayerItem playerItemWithURL:url];
-    AVPlayer * player = [AVPlayer playerWithPlayerItem:playerItem];
-    playerViewController.player = player;
-    [self presentViewController:playerViewController animated:YES completion:nil];
+    if ([fileManager fileExistsAtPath:mediaPath]) {
+        
+        MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:mediaUrl];
+        [self presentMoviePlayerViewControllerAnimated:playerViewController];
+    }else{
+        
+    }
 }
 
 @end

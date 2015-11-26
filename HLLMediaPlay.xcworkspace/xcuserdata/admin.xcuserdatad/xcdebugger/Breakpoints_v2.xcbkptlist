@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HLLMediaPlay/ViewController.m"
-            timestampString = "470140735.231702"
+            filePath = "HLLMediaPlay/MoviePlayerViewController.m"
+            timestampString = "470223563.629452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Gp-eS-b6F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Gp-eS-b6F">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -64,6 +64,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="alertLabel" destination="Q3x-g2-3pV" id="FGP-hA-ppO"/>
                         <outlet property="editBarButtonItem" destination="W1g-8r-Ex6" id="8o9-bu-3nR"/>
@@ -98,7 +99,7 @@
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Z8-tr-A8q" id="akZ-8b-QBj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ur7-0i-VKV">
@@ -194,18 +195,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="优酷" id="oid-Ju-DHu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="1HA-Ho-clf">
-                            <connections>
-                                <action selector="searchMediaInfoWithKeyword:" destination="pjf-G5-Xfa" id="suH-GK-KYn"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="delete_nav_s" id="TPq-3i-voh">
-                            <color key="tintColor" red="0.21845016286034813" green="0.60251834244807778" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="TPq-3i-voh">
                             <connections>
                                 <action selector="clearSearchMediaData:" destination="pjf-G5-Xfa" id="Jm2-AU-q1l"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="hf9-KI-LTd" kind="show" identifier="play" id="EEc-Pd-J4B"/>
@@ -219,7 +215,7 @@
         <scene sceneID="sTY-Fk-GPu">
             <objects>
                 <tableViewController id="9tF-yQ-cQN" customClass="HLLOnlineController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="2KK-yw-uqR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2KK-yw-uqR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -234,14 +230,14 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="online" rowHeight="200" id="Lfe-Nv-Kyd" customClass="HLLOnlineCell">
-                                <rect key="frame" x="0.0" y="136" width="600" height="200"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="online" rowHeight="44" id="Lfe-Nv-Kyd" customClass="HLLOnlineCell">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfe-Nv-Kyd" id="0k4-3u-nh2">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="Lfe-Nv-Kyd" id="0k4-3u-nh2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sG-9R-cYZ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sG-9R-cYZ">
                                             <rect key="frame" x="20" y="10" width="36" height="20"/>
                                             <animations/>
                                             <constraints>
@@ -253,7 +249,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-xd-HYP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-xd-HYP">
                                             <rect key="frame" x="30" y="177" width="29" height="17"/>
                                             <animations/>
                                             <constraints>
@@ -264,7 +260,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm9-dL-hdU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm9-dL-hdU">
                                             <rect key="frame" x="30" y="35" width="33" height="16"/>
                                             <animations/>
                                             <constraints>
@@ -275,7 +271,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j1z-b7-vdX">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j1z-b7-vdX">
                                             <rect key="frame" x="455" y="5" width="135" height="189"/>
                                             <animations/>
                                             <constraints>
@@ -328,6 +324,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="金象微电影" id="lE2-c4-PAW"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="yOF-95-xcl" kind="show" identifier="onlinePlay" id="Uyl-G9-fSH"/>
                     </connections>
@@ -358,6 +355,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVe-oe-VWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -377,10 +375,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0K-Ak-0cj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2665" y="1586"/>
+            <point key="canvasLocation" x="2682" y="1586"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wA5-Oz-DRU">
@@ -406,7 +405,7 @@
         <scene sceneID="Ase-Gf-0S6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dHP-iG-jIH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="search0" selectedImage="search1" id="tWI-gU-KPi"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="btn_live_normal" selectedImage="btn_live_selected" id="tWI-gU-KPi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TMy-yI-xxo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -426,7 +425,7 @@
         <scene sceneID="H7Y-xb-YfO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R0F-dB-8ik" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Local" image="home0" selectedImage="home1" id="Qyv-Lj-CJn"/>
+                    <tabBarItem key="tabBarItem" title="Local" image="btn_home_normal" selectedImage="btn_home_selected" id="Qyv-Lj-CJn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DfP-sa-i4L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -446,7 +445,7 @@
         <scene sceneID="szv-dj-UE6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jWc-C4-590" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Online" image="search0" selectedImage="search1" id="BX8-r1-t0s"/>
+                    <tabBarItem key="tabBarItem" title="Online" image="btn_live_normal" selectedImage="btn_live_selected" id="BX8-r1-t0s"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PzV-iM-KWK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -464,10 +463,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delete_nav_s" width="45" height="45"/>
-        <image name="home0" width="23" height="23"/>
-        <image name="home1" width="23" height="23"/>
-        <image name="search0" width="23" height="23"/>
-        <image name="search1" width="23" height="23"/>
+        <image name="btn_home_normal" width="26" height="26"/>
+        <image name="btn_home_selected" width="26" height="26"/>
+        <image name="btn_live_normal" width="26" height="26"/>
+        <image name="btn_live_selected" width="26" height="26"/>
     </resources>
 </document>

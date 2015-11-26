@@ -16,7 +16,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+//    UINavigationBar *bar = [UINavigationBar appearance];
+//    [bar setBackgroundImage:[UIImage imageNamed:@"Img_orange.png"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+//
+//    bar.tintColor = [UIColor whiteColor];
+//    bar.barTintColor = [UIColor whiteColor];
+//    // 2.设置导航栏文字属性
+//    NSDictionary *barAttrs = @{NSForegroundColorAttributeName:[UIColor whiteColor],
+//                                       NSFontAttributeName:[UIFont systemFontOfSize:17]};
+//    [bar setTitleTextAttributes:barAttrs];
+//    
+//    
+//    UITabBar * tabBar = [UITabBar appearance];
+//    tabBar.tintColor = [UIColor orangeColor];
+////    tabBar.barTintColor = [UIColor lightGrayColor];
+//    [tabBar setBackgroundImage:[UIImage imageNamed:@"kandian_bg03_sel.png"]];
+    
     return YES;
 }
 

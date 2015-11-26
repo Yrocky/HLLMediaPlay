@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.model.link]]];
+    [self.view addSubview:webView];
 }
 - (BOOL)shouldAutorotate{
     return NO;

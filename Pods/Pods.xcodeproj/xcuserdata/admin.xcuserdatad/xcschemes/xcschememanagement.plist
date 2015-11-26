@@ -9,7 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DTCoreText.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DTFoundation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FXImageView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,7 +59,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VKFoundation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VKVideoPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,7 +82,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>180AA5211D7564FA1B6E301EC3ABD6AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2C71DE0FB8A6E5BB6EAF9FB037D799CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>40663EEF5E17D6AE465229A98C4C357F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +102,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>53402BDE5D15A874C415114C0CCDEF51</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89514BF031039627A653935846D957CA</key>
+		<key>5F28494EB65EDA33D2C2C27AC0C38C3C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78239A33F829C2F1E81A0ACEDD00709E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8397D4A09A425D49DFCDC7049CDEDF02</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +137,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC9CA811DD19ABA79D03A2D590E01183</key>
+		<key>DBE96D472C899450DDE6E4065C7946B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD684CEF78B7725D997FF4EABD47BD10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA2EF5EAC34FB432C8A9E23B9E5159BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

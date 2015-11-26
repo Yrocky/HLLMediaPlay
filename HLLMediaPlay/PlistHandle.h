@@ -22,4 +22,6 @@
 - (BOOL) removeDataWithPlistName:(NSString *)plistName withDataID:(NSString *)ID;
 // clear
 - (BOOL) clearDataWithPlistName:(NSString *)plistName;
+// check
+- (BOOL) existMediaFromPlist:(NSString *)plistName WithID:(NSString *)ID;
 @end

@@ -21,9 +21,6 @@
 @property (nonatomic ,strong) NSURLSessionDownloadTask * downloadTask;
 @end
 
-//设备物理尺寸
-#define screen_width [UIScreen mainScreen].bounds.size.width
-#define screen_height [UIScreen mainScreen].bounds.size.height
 
 @implementation HLLOnlinePlayViewController
 
@@ -53,18 +50,29 @@
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
         
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        NSString * filePath = [NSString stringWithFormat:@"%@.mp4",fileName];
+        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
+        NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",fileName]];
+        
         NSDictionary * dict = @{@"ID":ID,
                                 @"name":fileName,
                                 @"image":imageUrl,
-                                @"path":filePath,
+                                @"path":mediaPath,
                                 @"description":description};
         
-        [[PlistHandle sharedPlistHandle] writerDataWithPlistName:@"dowload" ID:ID withDict:dict];
+        NSFileManager *fileManager=[NSFileManager defaultManager];
         
-        return [documentsDirectoryURL URLByAppendingPathComponent:filePath];
+        if(![fileManager fileExistsAtPath:cachePath]){
+            
+            [fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
+        }
         
+        if ([fileManager fileExistsAtPath:mediaPath]) {
+            return nil;
+        }else{
+            
+            [[PlistHandle sharedPlistHandle] writerDataWithPlistName:@"dowload" ID:ID withDict:dict];
+            return [[NSURL alloc] initFileURLWithPath:mediaPath];
+        }
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         if (error) {
             NSLog(@"error");
@@ -80,7 +88,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    [_downloadTask cancel];
 }
 - (void) creatActivityIndicatorView{
     
@@ -109,14 +116,26 @@
                                fileName:self.model.title
                                imageUrl:self.model.img
                             description:responseObject[@"description"]
-                                     ID:[NSString stringWithFormat:@"%@",responseObject[@"pubid"]]];
+                                     ID:self.model.ID];
         
+        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
+        NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",self.model.title]];
+        
+        BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:self.model.ID];
+        if (exist) {
+
+        }
         MoviePlayerViewController * moviePlayerViewController = [[MoviePlayerViewController alloc] init];
-        //    moviePlayerViewController.view.backgroundColor = [UIColor orangeColor];
-        moviePlayerViewController.view.frame = CGRectMake(0, 64, screen_width, 200);
+        moviePlayerViewController.view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 200);
         moviePlayerViewController.mediaInfo = _mediaInfoModel;
         [self.view addSubview:moviePlayerViewController.view];
-        
+//        [moviePlayerViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(0);
+//            make.right.mas_equalTo(0);
+//            make.top.mas_equalTo(64);
+////            make.height.mas_equalTo(200);
+//            make.bottom.mas_equalTo(0);
+//        }];
         [_activity stopAnimating];
         
     } andFialedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
