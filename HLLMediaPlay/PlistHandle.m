@@ -27,6 +27,7 @@ static PlistHandle *_instance;
     });
     return _instance;
 }
+
 - (NSString *) _plistPathWithPlistName:(NSString *)name{
     
     NSArray * path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -67,7 +68,16 @@ static PlistHandle *_instance;
     
     return plistData;
 }
+- (BOOL) existMediaFromPlist:(NSString *)plistName WithID:(NSString *)ID{
 
+    NSArray * plistData = [self getDataWithPlistName:plistName];
+    for (NSDictionary * media in plistData) {
+        if ([[NSString stringWithFormat:@"%@",ID] isEqualToString:[NSString stringWithFormat:@"%@",[media objectForKey:@"ID"]]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 - (id) getDataFromPlistWithName:(NSString *)plistName andID:(NSString *)ID{
     
     NSArray * plistData = [self getDataWithPlistName:plistName];
@@ -80,15 +90,19 @@ static PlistHandle *_instance;
 - (BOOL) removeDataWithPlistName:(NSString *)plistName withDataID:(NSString *)ID{
 
     BOOL status = NO;
+    
     NSMutableArray * plistData = [NSMutableArray arrayWithContentsOfFile:[self _plistPathWithPlistName:plistName]];
     for (NSDictionary * dict in plistData) {
-        if ([dict[@"ID"] isEqualToString:ID]) {
+        if ([[NSString stringWithFormat:@"%@",dict[@"ID"]] isEqualToString:ID]) {
             [plistData removeObject:dict];
             status = YES;
             break;
         }
     }
     [plistData writeToFile:[self _plistPathWithPlistName:plistName] atomically:YES];
+    if ([[NSFileManager defaultManager] isExecutableFileAtPath:[self _plistPathWithPlistName:plistName]]) {
+        
+    }
     return status;
 }
 #pragma mark - clear

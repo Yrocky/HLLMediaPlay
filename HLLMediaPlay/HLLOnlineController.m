@@ -7,11 +7,13 @@
 //
 
 #import "HLLOnlineController.h"
+#import "HLLOnlinePlayViewController.h"
+#import "MJRefreshBackNormalFooter.h"
+#import "HLLPlayerController.h"
 #import "HLLMediaModel.h"
 #import "HLLOnlineCell.h"
-#import "HLLOnlinePlayViewController.h"
 #import "HTTPTool.h"
-#import "MJRefreshBackNormalFooter.h"
+
 
 @interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
@@ -37,11 +39,6 @@
 
     [self searchKeyword:keyword loadMore:NO];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -85,6 +82,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     HLLMediaModel * model = self.onlineMedias[indexPath.row];
+    
+//    HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
+//    playerController.Hls_url = model.ID;
+//    [self.navigationController pushViewController:playerController animated:YES];
     [self performSegueWithIdentifier:@"onlinePlay" sender:model];
 }
 
@@ -99,15 +100,6 @@
     
     [self searchKeyword:searchInfo loadMore:NO];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void) loadMoreData{
     NSString * keyword = @"恐怖故事";
     [self searchKeyword:keyword loadMore:YES];

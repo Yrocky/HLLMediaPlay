@@ -9,9 +9,10 @@
 #import "MoviePlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "Masonry.h"
-#import "HTTPTool.h"
 #import "HLLMediaInfoModel.h"
+#import "PlistHandle.h"
+#import "HTTPTool.h"
+#import "Masonry.h"
 
 
 @interface MoviePlayerViewController ()
@@ -61,6 +62,9 @@
     }];
     _backView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor blackColor];
+    
+    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];// 监听loadedTimeRanges属性
+    
     [self creatTopView];
     
     [self creatBottomView];
@@ -96,6 +100,7 @@
     NSString * middleP = self.mediaInfo.playurl[@"480P"];
     NSString * lowP = self.mediaInfo.playurl[@"360P"];
     playurl = highP ? highP:(middleP?middleP:lowP);
+    
     self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:playurl]];
     self.player = [AVPlayer playerWithPlayerItem:_playerItem];
     AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
@@ -124,7 +129,6 @@
         make.height.equalTo(@40);
         make.right.equalTo(@0);
     }];
-    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];// 监听loadedTimeRanges属性
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -209,15 +213,15 @@
 #pragma mark - fullButton
     
     _fullScreenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_fullScreenButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_fullScreenButton setBackgroundImage:[UIImage imageNamed:@"btn_vdo_full.png"] forState:UIControlStateNormal];
     [self.topView addSubview:_fullScreenButton];
-    _fullScreenButton.backgroundColor = [UIColor orangeColor];
+    _fullScreenButton.backgroundColor = [UIColor clearColor];
     [_fullScreenButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-10);
         make.size.mas_equalTo(_backButton);
         make.centerY.mas_equalTo(_backButton);
     }];
-    [_fullScreenButton addTarget:self action:@selector(fullScreenButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [_fullScreenButton addTarget:self action:@selector(fullScreenButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
 #pragma mark - progress
     
@@ -235,13 +239,14 @@
     self.slider = [[UISlider alloc]init];
     [self.bottomView addSubview:_slider];
     [self.slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        //        make.left.mas_equalTo(startButton.mas_right).offset(10);
-        //        make.centerY.mas_equalTo(startButton);
-        //        make.right.equalTo(_currentTimeLabel.mas_left).offset(-10);
+        make.left.mas_equalTo(startButton.mas_right).offset(10);
+        make.centerY.mas_equalTo(startButton);
+        make.right.equalTo(_currentTimeLabel.mas_left).offset(-10);
     }];
     [_slider setThumbImage:[UIImage imageNamed:@"iconfont-yuan.png"] forState:UIControlStateNormal];
     [_slider addTarget:self action:@selector(progressSlider:) forControlEvents:UIControlEventValueChanged];
     _slider.minimumTrackTintColor = [UIColor colorWithRed:30 / 255.0 green:80 / 255.0 blue:100 / 255.0 alpha:1];
+
 }
 
 #pragma mark - 横屏代码
@@ -478,8 +483,9 @@
         
     }];
 }
-- (void) fullScreenButtonAction{
+- (void) fullScreenButtonAction:(UIButton *)button{
 
+//    btn_vdo_full_click
 }
 
 #pragma mark - server
