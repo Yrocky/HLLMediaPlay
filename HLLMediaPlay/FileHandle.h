@@ -10,8 +10,8 @@
 
 @interface FileHandle : NSObject
 
-// 本文件操作仅仅针对于Documents/Private_Documents/Cache下的文件
-// 切记！！！
+#warning 本文件操作仅仅针对于Documents/Private_Documents/Cache下的文件
+#warning 切记！！！
 + (FileHandle *)sharedPlistHandle;
 
 // 获得视频缓存文件夹的地址
@@ -21,7 +21,6 @@
 // 获得对应视频的url
 - (NSURL *) getMediaUrlWithMediaName:(NSString *)fileName;
 
-//fsd
 // 删除缓存视频的文件夹
 - (void) clearMediaCacheFolder;
 // 删除缓存视频
