@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84D65F001C08511100D1E27E /* HLLSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D65EFF1C08511100D1E27E /* HLLSettingController.m */; };
 		84DA1DC61C02E5DA00669B7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DC51C02E5DA00669B7D /* main.m */; };
 		84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DC81C02E5DA00669B7D /* AppDelegate.m */; };
 		84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DCB1C02E5DA00669B7D /* ViewController.m */; };
@@ -68,6 +69,8 @@
 /* Begin PBXFileReference section */
 		66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HLLMediaPlay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.debug.xcconfig"; sourceTree = "<group>"; };
+		84D65EFE1C08511100D1E27E /* HLLSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSettingController.h; sourceTree = "<group>"; };
+		84D65EFF1C08511100D1E27E /* HLLSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSettingController.m; sourceTree = "<group>"; };
 		84DA1DC11C02E5DA00669B7D /* HLLMediaPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLLMediaPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA1DC51C02E5DA00669B7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84DA1DC71C02E5DA00669B7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -188,6 +191,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84D65F011C08511700D1E27E /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				84D65EFE1C08511100D1E27E /* HLLSettingController.h */,
+				84D65EFF1C08511100D1E27E /* HLLSettingController.m */,
+			);
+			name = setting;
+			sourceTree = "<group>";
+		};
 		84DA1DB81C02E5DA00669B7D = {
 			isa = PBXGroup;
 			children = (
@@ -215,11 +227,12 @@
 			children = (
 				84DA1DC71C02E5DA00669B7D /* AppDelegate.h */,
 				84DA1DC81C02E5DA00669B7D /* AppDelegate.m */,
-				84FC25891C06EC50004F7EA7 /* play */,
 				84FC25731C059F82004F7EA7 /* local */,
 				84FC256C1C058254004F7EA7 /* youku */,
 				84FC256D1C058263004F7EA7 /* jxvdy */,
 				84FC24F41C02FECC004F7EA7 /* class */,
+				84FC25891C06EC50004F7EA7 /* play */,
+				84D65F011C08511700D1E27E /* setting */,
 				84FC24F01C02FE92004F7EA7 /* tool */,
 				D7DDC83D1C05F2DB002315A5 /* source */,
 				84DA1DC41C02E5DA00669B7D /* Supporting Files */,
@@ -596,6 +609,7 @@
 				84FC25931C06EFF7004F7EA7 /* HLLPlayerController.m in Sources */,
 				84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */,
 				84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */,
+				84D65F001C08511100D1E27E /* HLLSettingController.m in Sources */,
 				84FC25601C0449A5004F7EA7 /* MoviePlayerViewController.m in Sources */,
 				84FC25A61C06F260004F7EA7 /* FMGVideoPlayView.m in Sources */,
 				D7DDC83A1C04A34A002315A5 /* HLLOnlineCell.m in Sources */,

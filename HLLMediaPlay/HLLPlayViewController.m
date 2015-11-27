@@ -9,6 +9,7 @@
 #import "HLLPlayViewController.h"
 #import "HLLSearchMediaModel.h"
 
+#import "Masonry.h"
 @interface HLLPlayViewController ()
 @end
 
@@ -16,9 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIWebView * webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    UIWebView * webView = [[UIWebView alloc] init];
     [webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.model.link]]];
     [self.view addSubview:webView];
+    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left);
+        make.top.mas_equalTo(self.view.mas_top);
+        make.right.mas_equalTo(self.view.mas_right);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+    }];
 }
 - (BOOL)shouldAutorotate{
     return NO;

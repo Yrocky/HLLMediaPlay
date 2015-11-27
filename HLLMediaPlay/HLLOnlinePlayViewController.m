@@ -9,6 +9,7 @@
 #import "HLLOnlinePlayViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AVFoundation/AVFoundation.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <AVKit/AVKit.h>
 
 #import "MoviePlayerViewController.h"
@@ -43,10 +44,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AFNetworkReachabilityManager * networkManager = [AFNetworkReachabilityManager sharedManager];
+    [networkManager startMonitoring];
+    
     [self creatActivityIndicatorView];
     
     [self currentMediaInfoWithID:self.model.ID];
     
+}
+- (void)dealloc{
+
+    AFNetworkReachabilityManager * networkManager = [AFNetworkReachabilityManager sharedManager];
+    [networkManager stopMonitoring];
 }
 - (void)viewDidAppear:(BOOL)animated{
 
@@ -70,6 +79,31 @@
 
 - (IBAction)playMedia:(id)sender {
     
+    AFNetworkReachabilityManager * networkManager = [AFNetworkReachabilityManager sharedManager];
+    [networkManager startMonitoring];
+    BOOL wwan = networkManager.isReachableViaWWAN;
+    NSString * status = [networkManager localizedNetworkReachabilityStatusString];
+    NSLog(@"status:%@",status);
+    if (wwan) {
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"当前使用蜂窝移动网络，继续观看可能会产生大量的流量，是否继续？您可以到\"设置->蜂窝移动网络播放\"进行设置" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self playerMedia];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:sureAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+    
+        [self playerMedia];
+    }
+    
+}
+
+// 播放视频
+- (void) playerMedia{
+    
     NSString * playPath;
     NSURL * playUrl;
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
@@ -92,7 +126,7 @@
                                      ID:self.model.ID];
         playUrl = [NSURL URLWithString:playPath];
     }
-
+    
     AVPlayer * player = [AVPlayer playerWithURL:playUrl];
     AVPlayerViewController * playerViewConteller = [[AVPlayerViewController alloc] init];
     playerViewConteller.player = player;
@@ -100,7 +134,6 @@
         [player play];
     }];
 }
-
 
 // 获取视频的相关内容
 - (void) currentMediaInfoWithID:(NSString *)ID{

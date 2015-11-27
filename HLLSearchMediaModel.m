@@ -19,17 +19,6 @@
 
     self = [super init];
     if (self) {
-        
-//#ifdef Youku_Tudou
-//        _ID = dict[@"code"];
-//        _title = dict[@"title"];
-//        _thumbnail = dict[@"picUrl"];
-//        _duration = dict[@"totalTime"];
-//        _category = dict[@"mediaType"];
-//        _user_name = dict[@"ownerNickname"]?dict[@"ownerNickname"]:dict[@"ownerName"];
-//        _link = dict[@"outerPlayerUrl"];
-//        
-//#else
         _ID = dict[@"id"];
         _title = dict[@"title"]? dict[@"title"]:@"default";
         _duration = [self _changeFloatDurationToStringDuration:[dict[@"duration"] floatValue]];
@@ -43,7 +32,6 @@
         _comment_count = [dict[@"comment_count"] integerValue];
         _view_couint = [dict[@"view_count"] integerValue];
         _favorite_count = [dict[@"favorite_count"] integerValue];
-//#endif
         
     }
     return self;
