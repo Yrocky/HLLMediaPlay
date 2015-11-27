@@ -8,12 +8,15 @@
 
 #import "HLLDowloadCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "FileHandle.h"
 
 @interface HLLDowloadCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
 
 @end
 
@@ -37,6 +40,10 @@
     NSURL * url = [NSURL URLWithString:model.image];
     [self.mediaImageView sd_setImageWithURL:url
                           placeholderImage:[UIImage imageNamed:@"load"]];
+    
+    self.timeLabel.text = [[FileHandle sharedPlistHandle] getFileCreationDateWithFileName:model.name];
+    float size = [[FileHandle sharedPlistHandle] getFileSizeWithFileName:model.name];
+    self.sizeLabel.text = [NSString stringWithFormat:@"%.1f M",size];
 }
 
 - (void)awakeFromNib {
