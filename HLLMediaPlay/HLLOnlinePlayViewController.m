@@ -84,9 +84,7 @@
     BOOL wwan = networkManager.isReachableViaWWAN;
     NSString * status = [networkManager localizedNetworkReachabilityStatusString];
     NSLog(@"status:%@",status);
-    if (!wwan) {
-        
-    }else{
+    if (wwan) {
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"当前使用蜂窝移动网络，继续观看可能会产生大量的流量，是否继续？您可以到\"设置->蜂窝移动网络播放\"进行设置" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -96,6 +94,9 @@
         [alertController addAction:sureAction];
         
         [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+    
+        [self playerMedia];
     }
     
 }

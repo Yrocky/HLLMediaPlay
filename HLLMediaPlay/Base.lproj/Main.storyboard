@@ -499,11 +499,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="播放" id="o6L-71-3Oq">
                         <barButtonItem key="backBarButtonItem" title="Back" id="oLF-fS-BEY"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="8Q3-V8-H57">
-                            <connections>
-                                <action selector="showMediaPlayViewController:" destination="hf9-KI-LTd" id="9wV-yg-Tpi"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
