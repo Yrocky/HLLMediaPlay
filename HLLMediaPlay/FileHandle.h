@@ -21,7 +21,7 @@
 // 获得对应视频的url
 - (NSURL *) getMediaUrlWithMediaName:(NSString *)fileName;
 
-
+// 这里是compery分支修改的内容，待会儿提交到主分支上
 // 删除缓存视频的文件夹
 - (void) clearMediaCacheFolder;
 // 删除缓存视频
