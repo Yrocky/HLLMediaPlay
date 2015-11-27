@@ -15,8 +15,6 @@
 #import "HLLOnlineCell.h"
 #import "HTTPTool.h"
 
-#import "HLLPlayerController.h"
-
 @interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
 @property (nonatomic ,assign) int offset;
@@ -49,6 +47,10 @@
     if ([identifier isEqualToString:@"onlinePlay"]) {
         HLLOnlinePlayViewController * playViewController = segue.destinationViewController;
         playViewController.model = sender;
+    }
+    if ([identifier isEqualToString:@"customPlay"]) {
+        HLLPlayerController * playerController = segue.destinationViewController;
+        playerController.mediaID = sender;
     }
 }
 
@@ -86,32 +88,21 @@
     HLLMediaModel * model = self.onlineMedias[indexPath.row];
 
     
-//    [self sfdsgWithID:model.ID];
-//    return;
-    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
-}
-
-- (void) sfdsgWithID:(NSString *)ID{
-
-    [HTTPTool requestJXVDYMediaInfoWithID:ID successedBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+    UIAlertController * actionSheetController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * customAction = [UIAlertAction actionWithTitle:@"使用自定义播放器进行播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"media info result:%@",responseObject);
-
-        NSString * hls_url;
-
-        NSString * highP = responseObject[@"playurl"][@"720P"];
-        NSString * middleP = responseObject[@"playurl"][@"480P"];
-        NSString * lowP = responseObject[@"playurl"][@"360P"];
-        hls_url = highP ? highP:(middleP?middleP:lowP);
-
-        HLLPlayerController * playerController = [[HLLPlayerController alloc] init];
-        playerController.Hls_url = hls_url;
-        [self.navigationController pushViewController:playerController animated:YES];
-        
-    } andFialedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-
-        NSLog(@"fail:%@",error.localizedDescription);
+        [self performSegueWithIdentifier:@"customPlay" sender:[NSString stringWithFormat:@"%@",model.ID]];
     }];
+    UIAlertAction * systemAction = [UIAlertAction actionWithTitle:@"使用系统播放器进行播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
+    
+    [actionSheetController addAction:cancelAction];
+    [actionSheetController addAction:systemAction];
+    [actionSheetController addAction:customAction];
+//    [self.tabBarController presentViewController:actionSheetController animated:YES completion:nil];
 }
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{

@@ -31,44 +31,16 @@ static FileHandle *_instance;
     });
     return _instance;
 }
-// 获得下载视频的url
-- (NSURL *) dowloadMediaUrlWithFileName:(NSString *)fileName{
-
-    NSString * mediaPath = [self getMediaPathWithFileName:fileName];
-    
-    return [[NSURL alloc] initFileURLWithPath:mediaPath];
-}
-
-// 删除缓存视频文件夹
-- (void) clearMediaCacheFile{
-
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:Documents_Media_Cache_Path];
-    [fileManager removeItemAtPath:cachePath error:nil];
-}
-
-// 删除本地缓存的视频
-- (void) removeMediaCacheFileWithFileName:(NSString *)fileName{
-
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-
-    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:Documents_Media_Cache_Path];
-    
-    NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",fileName]];
-    [fileManager removeItemAtPath:mediaPath error:nil];
-}
-
+#pragma mark - get
 // 获得视频缓存文件夹的地址
 - (NSString *) getMediaCachePath{
 
-    return Documents_Media_Cache_Path;
+    return [NSHomeDirectory() stringByAppendingPathComponent:Documents_Media_Cache_Path];
 }
 // 获得对应视频的url
 - (NSURL *) getMediaUrlWithMediaName:(NSString *)fileName{
     
-    NSString * mediaPath = [self getMediaPathWithFileName:fileName];
-    
-    NSURL * mediaUrl = [NSURL fileURLWithPath:mediaPath];
+    NSURL * mediaUrl = [NSURL fileURLWithPath:[self getMediaPathWithFileName:fileName]];
     
     return mediaUrl;
 }
@@ -76,8 +48,30 @@ static FileHandle *_instance;
 // 获得对应视频的path
 - (NSString *) getMediaPathWithFileName:(NSString *)fileName{
     
-    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:Documents_Media_Cache_Path];
+    NSString *cachePath = [self getMediaCachePath];
     NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",fileName]];
     return mediaPath;
 }
+
+#pragma mark - delete
+// 删除缓存视频文件夹
+- (void) clearMediaCacheFolder{
+    
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    
+    NSString *cachePath = [self getMediaCachePath];
+    
+    [fileManager removeItemAtPath:cachePath error:nil];
+}
+
+// 删除本地缓存的视频
+- (void) removeMediaCacheFileWithFileName:(NSString *)fileName{
+    
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    
+    NSString * mediaPath = [self getMediaPathWithFileName:fileName];
+    
+    [fileManager removeItemAtPath:mediaPath error:nil];
+}
+
 @end
