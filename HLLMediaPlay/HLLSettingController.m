@@ -39,9 +39,18 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     _selectedCell = cell;
+    
+    float folderSize = [[FileHandle sharedPlistHandle] getCacheFileSizeAtCachePath];
+    if (!folderSize) {
+        
+        NSIndexPath * clearIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        UITableViewCell * clearCell = [self.tableView cellForRowAtIndexPath:clearIndexPath];
+        clearCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        clearCell.textLabel.textColor = [UIColor lightGrayColor];
+    }
 }
 
-- (void) clearCacheMedia{
+- (void) clearCacheMediaWithIndexPath:(NSIndexPath *)indexPath{
 
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要清空缓存视频么" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -53,6 +62,10 @@
         // 删除放视频的文件夹
         [[FileHandle sharedPlistHandle] clearMediaCacheFolder];
         
+        // 将cell置为不能选
+        UITableViewCell * clearCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        clearCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        clearCell.textLabel.textColor = [UIColor lightGrayColor];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:sureAction];
@@ -76,8 +89,8 @@
         NSString * rowString = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         [[NSUserDefaults standardUserDefaults] setObject:rowString forKey:@"mediaType"];
     }
-    if(indexPath.section == 2 && indexPath.row == 0){
-        [self clearCacheMedia];
+    if(indexPath.section == 2 && indexPath.row == 0 && [[FileHandle sharedPlistHandle] getCacheFileSizeAtCachePath]){
+        [self clearCacheMediaWithIndexPath:indexPath];
     }
 }
 /*

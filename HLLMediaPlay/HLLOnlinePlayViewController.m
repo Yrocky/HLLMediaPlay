@@ -103,13 +103,24 @@
 
 // 播放视频
 - (void) playerMedia{
-    
+
     NSString * playPath;
     NSURL * playUrl;
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
     NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
     NSString * lowP = self.mediaInfoModel.playurl[@"360P"];
-    playPath = highP ? highP:(middleP?middleP:lowP);
+    
+    NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
+    NSInteger row = [rowString integerValue];
+    if (row) {
+        if (row == 1) {// middle
+            playPath = (middleP?middleP:lowP);
+        }else{// low
+            playPath = lowP;
+        }
+    }else{//  high
+        playPath = highP ? highP:(middleP?middleP:lowP);
+    }
     
     BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:[NSString stringWithFormat:@"%@",self.model.ID]];
     
@@ -253,19 +264,31 @@
 // 对获得到的视频内容进行下载和使用moviePlayer控制器的view进行展示
 - (void) playMediaWithMoviePlayerViewAndDowloadMediaWithResponseObject:(id)responseObject{
 
-    NSString * playurl;
+    NSString * playPath;
+    NSURL * playUrl;
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
     NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
     NSString * lowP = self.mediaInfoModel.playurl[@"360P"];
-    playurl = highP ? highP:(middleP?middleP:lowP);
     
-    [self downloadTaskWithUrlString:playurl
+    NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
+    NSInteger row = [rowString integerValue];
+    if (row) {
+        if (row == 1) {// middle
+            playPath = (middleP?middleP:lowP);
+        }else{// low
+            playPath = lowP;
+        }
+    }else{//  high
+        playPath = highP ? highP:(middleP?middleP:lowP);
+    }
+    
+    
+    [self downloadTaskWithUrlString:playPath
                            fileName:self.model.title
                            imageUrl:self.model.img
                         description:responseObject[@"description"]
                                  ID:self.model.ID];
     
-    NSString * mediaPath =  [[FileHandle sharedPlistHandle] getMediaPathWithFileName:self.model.title];
     BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:self.model.ID];
     if (exist) {
         

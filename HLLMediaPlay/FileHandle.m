@@ -75,6 +75,17 @@ static FileHandle *_instance;
 }
 
 #pragma mark - fileAttribute
+// 返回cache文件夹
+- (NSDictionary *) getCacheFileAttributes{
+    
+    NSString * cachePath = [self getMediaCachePath];
+    NSFileManager * filemanager = [NSFileManager defaultManager];
+    
+    if ([filemanager fileExistsAtPath:cachePath]) {
+        return [filemanager attributesOfItemAtPath:cachePath error:nil];
+    }
+    return nil;
+}
 // 返回指定文件名的文件信息
 - (NSDictionary *) getFileAttributesWithFileName:(NSString *)fileName{
 
@@ -99,24 +110,37 @@ static FileHandle *_instance;
 }
 
 // 获得cache文件夹的大小 - - 返回多少M
-- (float) getFolderSizeWithAtCachePath{
+- (float) getFolderSizeAtCachePath{
     
-    NSFileManager* filemanager = [NSFileManager defaultManager];
+    NSDictionary * cacheAttribute = [self getCacheFileAttributes];
     
-    NSString * folderPath = [self getMediaCachePath];
-    if (![filemanager fileExistsAtPath:folderPath]) {
-        return 0;
+    if (cacheAttribute) {
+        long long fileSize = [cacheAttribute fileSize];
+        return fileSize /(1024.0 * 1024.0);
     }
+    return 0.0;
+}
+// 获取cache文件夹下的文件的总大小 - - 返回多少M
+- (float) getCacheFileSizeAtCachePath{
+
+    NSFileManager * fileManager = [NSFileManager defaultManager];
     
-    NSEnumerator *childFilesEnumerator = [[filemanager subpathsAtPath:folderPath] objectEnumerator];
+    NSFileManager* manager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:[self getMediaCachePath]]) return 0;
+    
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:[self getMediaCachePath]] objectEnumerator];
     
     NSString* fileName;
+    
     long long folderSize = 0;
     
     while ((fileName = [childFilesEnumerator nextObject]) != nil){
-        
+        NSLog(@"fileName:%@",fileName);
+        fileName = [fileName stringByDeletingPathExtension];
         folderSize += [self getFileSizeWithFileName:fileName];
     }
+    
     return folderSize/(1024.0*1024.0);
 }
 // 获取指定文件名的创建时间，格式为yyyy-MM-dd hh:mm
