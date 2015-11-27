@@ -21,6 +21,7 @@
 // 获得对应视频的url
 - (NSURL *) getMediaUrlWithMediaName:(NSString *)fileName;
 
+
 //fsd
 // 删除缓存视频的文件夹
 - (void) clearMediaCacheFolder;
