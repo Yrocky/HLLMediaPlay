@@ -12,7 +12,7 @@
 
 
 @interface HLLSettingController ()
-
+@property (nonatomic ,strong) UITableViewCell * selectedCell;
 @end
 
 @implementation HLLSettingController
@@ -27,6 +27,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+    
+    NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
+    NSInteger row = [rowString integerValue];
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:1];
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    _selectedCell = cell;
+}
 
 - (void) clearCacheMedia{
 
@@ -54,7 +67,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
-        
+        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (_selectedCell != cell) {
+            _selectedCell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            _selectedCell = cell;
+        }
+        NSString * rowString = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+        [[NSUserDefaults standardUserDefaults] setObject:rowString forKey:@"mediaType"];
     }
     if(indexPath.section == 2 && indexPath.row == 0){
         [self clearCacheMedia];
