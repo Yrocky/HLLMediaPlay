@@ -74,24 +74,8 @@
 }
 - (IBAction)mainViewContoller_ClearMediaData:(id)sender {
     
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要清空缓存视频么" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        // 删除plist文件
-        [[PlistHandle sharedPlistHandle] clearDataWithPlistName:@"dowload"];
-        
-        // 删除放视频的文件夹
-        [[FileHandle sharedPlistHandle] clearMediaCacheFolder];
-        
-        [self.medias removeAllObjects];
-        [self barButtonItemEnabledHandle];
-        [self.tableView reloadData];
-    }];
-    [alertController addAction:cancelAction];
-    [alertController addAction:sureAction];
-
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"setting" sender:nil];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -126,7 +110,6 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         HLLDowloadModel * model = self.medias[indexPath.row];
-        NSFileManager *fileManager=[NSFileManager defaultManager];
         
         // 删除plist文件中的视频缓存记录
         [[PlistHandle sharedPlistHandle] removeDataWithPlistName:@"dowload" withDataID:[NSString stringWithFormat:@"%@",model.ID]];

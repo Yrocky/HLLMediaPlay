@@ -39,32 +39,67 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toa-jC-a06">
-                        <rect key="frame" x="30" y="38" width="29" height="14"/>
+                        <rect key="frame" x="30" y="33" width="29" height="14"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54H-dt-FSK" userLabel="time_Label">
+                        <rect key="frame" x="30" y="134" width="36" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6jC-mY-ded"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="TI4-Dg-2ee"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmR-Dx-zFb" userLabel="size_Label">
+                        <rect key="frame" x="86" y="135" width="36" height="20"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="4TB-1Y-Dk4"/>
+                            <constraint firstAttribute="height" constant="20" id="Ony-dl-6Qt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <animations/>
                 <constraints>
+                    <constraint firstItem="54H-dt-FSK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="4yi-ml-FOd"/>
                     <constraint firstItem="eCH-vB-00y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5tX-EF-OgR"/>
-                    <constraint firstItem="toa-jC-a06" firstAttribute="top" secondItem="eCH-vB-00y" secondAttribute="bottom" constant="10" id="7dB-FS-1kV"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="toa-jC-a06" secondAttribute="bottom" constant="10" id="Ex4-T3-Dhm"/>
+                    <constraint firstItem="toa-jC-a06" firstAttribute="top" secondItem="eCH-vB-00y" secondAttribute="bottom" constant="5" id="7dB-FS-1kV"/>
+                    <constraint firstItem="AmR-Dx-zFb" firstAttribute="bottom" secondItem="54H-dt-FSK" secondAttribute="bottom" id="9nN-yx-lmu"/>
                     <constraint firstItem="mgW-Ou-jFS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="JXn-kZ-F2C"/>
+                    <constraint firstAttribute="bottom" secondItem="AmR-Dx-zFb" secondAttribute="bottom" constant="20" id="NHe-NN-Xhj"/>
                     <constraint firstItem="mgW-Ou-jFS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eCH-vB-00y" secondAttribute="trailing" constant="20" id="PwQ-F2-bef"/>
                     <constraint firstAttribute="trailing" secondItem="mgW-Ou-jFS" secondAttribute="trailing" constant="10" id="UZf-zC-JyS"/>
+                    <constraint firstAttribute="bottom" secondItem="54H-dt-FSK" secondAttribute="bottom" constant="5" id="Wqc-8Z-YFn"/>
+                    <constraint firstItem="mgW-Ou-jFS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AmR-Dx-zFb" secondAttribute="trailing" constant="20" id="cmw-xB-byA"/>
+                    <constraint firstItem="AmR-Dx-zFb" firstAttribute="leading" secondItem="54H-dt-FSK" secondAttribute="trailing" constant="20" id="flN-us-huA"/>
                     <constraint firstItem="toa-jC-a06" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lZd-sD-4Np"/>
                     <constraint firstItem="mgW-Ou-jFS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="toa-jC-a06" secondAttribute="trailing" constant="20" id="mz6-oC-ZIE"/>
                     <constraint firstItem="eCH-vB-00y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qMz-VS-dhK"/>
                     <constraint firstAttribute="bottom" secondItem="mgW-Ou-jFS" secondAttribute="bottom" constant="10" id="v9C-gI-kEv"/>
+                    <constraint firstItem="54H-dt-FSK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="toa-jC-a06" secondAttribute="bottom" id="xfc-CP-EZa"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="NHe-NN-Xhj"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
                 <outlet property="descriptionLabel" destination="toa-jC-a06" id="oPs-Nn-cpR"/>
                 <outlet property="mediaImageView" destination="mgW-Ou-jFS" id="nbb-ON-wxt"/>
                 <outlet property="nameLabel" destination="eCH-vB-00y" id="fIZ-Ql-iOb"/>
+                <outlet property="sizeLabel" destination="AmR-Dx-zFb" id="J6b-xj-eYe"/>
+                <outlet property="timeLabel" destination="54H-dt-FSK" id="a7t-bj-QO5"/>
             </connections>
             <point key="canvasLocation" x="278" y="299.5"/>
         </tableViewCell>

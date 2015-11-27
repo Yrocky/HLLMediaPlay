@@ -74,4 +74,63 @@ static FileHandle *_instance;
     [fileManager removeItemAtPath:mediaPath error:nil];
 }
 
+#pragma mark - fileAttribute
+// 返回指定文件名的文件信息
+- (NSDictionary *) getFileAttributesWithFileName:(NSString *)fileName{
+
+    NSString * mediaPath = [self getMediaPathWithFileName:fileName];
+    NSFileManager * filemanager = [NSFileManager defaultManager];
+    
+    if ([filemanager fileExistsAtPath:mediaPath]) {
+        return [filemanager attributesOfItemAtPath:mediaPath error:nil];
+    }
+    return nil;
+}
+// 获取指定文件名的文件大小 - - 多少M
+- (float) getFileSizeWithFileName:(NSString *)fileName{
+
+    NSDictionary * fileAttribute = [self getFileAttributesWithFileName:fileName];
+
+    if (fileAttribute) {
+        long long fileSize = [fileAttribute fileSize];
+        return fileSize /(1024.0 * 1024.0);
+    }
+    return 0.0;
+}
+
+// 获得cache文件夹的大小 - - 返回多少M
+- (float) getFolderSizeWithAtCachePath{
+    
+    NSFileManager* filemanager = [NSFileManager defaultManager];
+    
+    NSString * folderPath = [self getMediaCachePath];
+    if (![filemanager fileExistsAtPath:folderPath]) {
+        return 0;
+    }
+    
+    NSEnumerator *childFilesEnumerator = [[filemanager subpathsAtPath:folderPath] objectEnumerator];
+    
+    NSString* fileName;
+    long long folderSize = 0;
+    
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        
+        folderSize += [self getFileSizeWithFileName:fileName];
+    }
+    return folderSize/(1024.0*1024.0);
+}
+// 获取指定文件名的创建时间，格式为yyyy-MM-dd hh:mm
+- (NSString *) getFileCreationDateWithFileName:(NSString *)fileName{
+    
+    NSDictionary * fileAttribute = [self getFileAttributesWithFileName:fileName];
+    
+    if (fileAttribute) {
+        NSDate * creatioinDate = [fileAttribute fileCreationDate];
+        NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        return [dateFormatter stringFromDate:creatioinDate];
+    }
+    return @"";
+}
+
 @end
