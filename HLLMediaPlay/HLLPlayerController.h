@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class HLLMediaInfoModel;
 @interface HLLPlayerController : UIViewController
 
-@property(nonatomic,strong)NSString *Hls_url;
-
+@property(nonatomic,strong)NSString *mediaID;
 @end

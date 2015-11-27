@@ -10,6 +10,7 @@
 #import "HLLSearchMediaModel.h"
 #import "HLLDowloadCell.h"
 #import "PlistHandle.h"
+#import "FileHandle.h"
 #import "HTTPTool.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -81,9 +82,7 @@
         [[PlistHandle sharedPlistHandle] clearDataWithPlistName:@"dowload"];
         
         // 删除放视频的文件夹
-        NSFileManager *fileManager=[NSFileManager defaultManager];
-        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
-        [fileManager removeItemAtPath:cachePath error:nil];
+        [[FileHandle sharedPlistHandle] clearMediaCacheFolder];
         
         [self.medias removeAllObjects];
         [self barButtonItemEnabledHandle];
@@ -134,10 +133,7 @@
         [self.medias removeObject:model];
         
         // 删除本地缓存的视频
-        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
-        
-        NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",model.name]];
-        [fileManager removeItemAtPath:mediaPath error:nil];
+        [[FileHandle sharedPlistHandle] removeMediaCacheFileWithFileName:model.name];
     }
     [tableView reloadData];
 
@@ -165,18 +161,24 @@
     HLLDowloadModel * model = self.medias[indexPath.row];
     
     NSFileManager *fileManager=[NSFileManager defaultManager];
-    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
     
-    NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",model.name]];
-    NSURL * mediaUrl = [NSURL fileURLWithPath:mediaPath];
-    
+    NSString * mediaPath = [[FileHandle sharedPlistHandle] getMediaPathWithFileName:model.name];
+    NSURL * mediaUrl = [[FileHandle sharedPlistHandle] getMediaUrlWithMediaName:model.name];
+
     if ([fileManager fileExistsAtPath:mediaPath]) {
         
-        MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:mediaUrl];
-        [self presentMoviePlayerViewControllerAnimated:playerViewController];
-    }else{
+        AVPlayer * player = [AVPlayer playerWithURL:mediaUrl];
+        AVPlayerViewController * playerViewConteller = [[AVPlayerViewController alloc] init];
+        playerViewConteller.player = player;
+        [self presentViewController:playerViewConteller animated:YES completion:^{
         
+            [player play];
+        }];
+    }else{
+        NSLog(@"Hei man ,you cant be here!!");
     }
+    
+    
 }
 
 @end

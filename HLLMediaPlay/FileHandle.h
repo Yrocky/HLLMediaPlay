@@ -12,9 +12,6 @@
 
 + (FileHandle *)sharedPlistHandle;
 
-// 获得下载视频的url
-- (NSURL *) dowloadMediaUrlWithFileName:(NSString *)fileName;
-
 // 获得视频缓存文件夹的地址
 - (NSString *) getMediaCachePath;
 // 获得对应视频的path
@@ -23,7 +20,7 @@
 - (NSURL *) getMediaUrlWithMediaName:(NSString *)fileName;
 
 // 删除缓存视频的文件夹
-- (void) clearMediaCacheFile;
+- (void) clearMediaCacheFolder;
 // 删除缓存视频
 - (void) removeMediaCacheFileWithFileName:(NSString *)fileName;
 @end

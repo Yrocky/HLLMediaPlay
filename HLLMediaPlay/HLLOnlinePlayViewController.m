@@ -7,15 +7,17 @@
 //
 
 #import "HLLOnlinePlayViewController.h"
-#import "MoviePlayerViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
+
+#import "MoviePlayerViewController.h"
 #import "HLLMediaInfoModel.h"
 #import "HLLMediaModel.h"
 #import "PlistHandle.h"
+#import "FileHandle.h"
 #import "HTTPTool.h"
 #import "Masonry.h"
-
 
 @interface HLLOnlinePlayViewController ()
 @property (nonatomic ,strong) HLLMediaInfoModel * mediaInfoModel;
@@ -46,11 +48,14 @@
     [self currentMediaInfoWithID:self.model.ID];
     
 }
-- (void)viewDidDisappear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
 
     [super viewWillDisappear:animated];
     
-//    [_downloadTask cancel];
+    if (_downloadTask) {
+
+        [_downloadTask cancel];
+    }
 }
 
 - (void) creatActivityIndicatorView{
@@ -65,14 +70,35 @@
 
 - (IBAction)playMedia:(id)sender {
     
-    NSString * playurl;
+    NSString * playPath;
+    NSURL * playUrl;
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
     NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
     NSString * lowP = self.mediaInfoModel.playurl[@"360P"];
-    playurl = highP ? highP:(middleP?middleP:lowP);
+    playPath = highP ? highP:(middleP?middleP:lowP);
     
-    MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:playurl]];
-    [self presentMoviePlayerViewControllerAnimated:playerViewController];
+    BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:[NSString stringWithFormat:@"%@",self.model.ID]];
+    
+    if (exist) {
+        // 播放本地视频
+        playPath = [[FileHandle sharedPlistHandle] getMediaPathWithFileName:self.model.title];
+        playUrl = [NSURL fileURLWithPath:playPath];
+    }else{
+        // 从网络缓存到本地
+        [self downloadTaskWithUrlString:playPath
+                               fileName:self.model.title
+                               imageUrl:self.model.img
+                            description:self.mediaInfoModel.mediaDescription
+                                     ID:self.model.ID];
+        playUrl = [NSURL URLWithString:playPath];
+    }
+
+    AVPlayer * player = [AVPlayer playerWithURL:playUrl];
+    AVPlayerViewController * playerViewConteller = [[AVPlayerViewController alloc] init];
+    playerViewConteller.player = player;
+    [self presentViewController:playerViewConteller animated:YES completion:^{
+        [player play];
+    }];
 }
 
 
@@ -83,8 +109,11 @@
         
         NSLog(@"media info result:%@",responseObject);
         _mediaInfoModel = [[HLLMediaInfoModel alloc] initWithDict:responseObject];
+        
         [self playMediaWithSystemMediaFunctionWithResponseObject:responseObject];
+        
 //        [self playMediaWithMoviePlayerViewAndDowloadMediaWithResponseObject:responseObject];
+        
         [_activity stopAnimating];
         
     } andFialedBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -104,9 +133,8 @@
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
         
-        NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
-        NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",fileName]];
-        
+        NSString *cachePath = [[FileHandle sharedPlistHandle] getMediaCachePath];
+        NSString * mediaPath = [[FileHandle sharedPlistHandle] getMediaPathWithFileName:fileName];
         NSDictionary * dict = @{@"ID":ID,
                                 @"name":fileName,
                                 @"image":imageUrl,
@@ -125,7 +153,7 @@
         }else{
             
             [[PlistHandle sharedPlistHandle] writerDataWithPlistName:@"dowload" ID:ID withDict:dict];
-            return [[NSURL alloc] initFileURLWithPath:mediaPath];
+            return [NSURL fileURLWithPath:mediaPath];
         }
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         if (error) {
@@ -204,9 +232,7 @@
                         description:responseObject[@"description"]
                                  ID:self.model.ID];
     
-    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Private_Documents/Cache"];
-    NSString * mediaPath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",self.model.title]];
-    
+    NSString * mediaPath =  [[FileHandle sharedPlistHandle] getMediaPathWithFileName:self.model.title];
     BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:self.model.ID];
     if (exist) {
         

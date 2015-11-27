@@ -35,7 +35,6 @@
 		84FC25811C06AE43004F7EA7 /* FileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25801C06AE43004F7EA7 /* FileHandle.m */; };
 		84FC25841C06D947004F7EA7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25821C06D947004F7EA7 /* icon@2x.png */; };
 		84FC25851C06D947004F7EA7 /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25831C06D947004F7EA7 /* icon@3x.png */; };
-		84FC258C1C06ECA0004F7EA7 /* YFViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC258B1C06ECA0004F7EA7 /* YFViewPager.m */; };
 		84FC25931C06EFF7004F7EA7 /* HLLPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25921C06EFF7004F7EA7 /* HLLPlayerController.m */; };
 		84FC25A61C06F260004F7EA7 /* FMGVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC25A01C06F260004F7EA7 /* FMGVideoPlayView.m */; };
 		84FC25A71C06F260004F7EA7 /* FMGVideoPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FC25A11C06F260004F7EA7 /* FMGVideoPlayView.xib */; };
@@ -117,8 +116,6 @@
 		84FC25801C06AE43004F7EA7 /* FileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandle.m; sourceTree = "<group>"; };
 		84FC25821C06D947004F7EA7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		84FC25831C06D947004F7EA7 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
-		84FC258A1C06ECA0004F7EA7 /* YFViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFViewPager.h; sourceTree = "<group>"; };
-		84FC258B1C06ECA0004F7EA7 /* YFViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFViewPager.m; sourceTree = "<group>"; };
 		84FC25911C06EFF7004F7EA7 /* HLLPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLPlayerController.h; sourceTree = "<group>"; };
 		84FC25921C06EFF7004F7EA7 /* HLLPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLPlayerController.m; sourceTree = "<group>"; };
 		84FC259F1C06F260004F7EA7 /* FMGVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGVideoPlayView.h; sourceTree = "<group>"; };
@@ -369,8 +366,6 @@
 			children = (
 				84FC25911C06EFF7004F7EA7 /* HLLPlayerController.h */,
 				84FC25921C06EFF7004F7EA7 /* HLLPlayerController.m */,
-				84FC258A1C06ECA0004F7EA7 /* YFViewPager.h */,
-				84FC258B1C06ECA0004F7EA7 /* YFViewPager.m */,
 				84FC259F1C06F260004F7EA7 /* FMGVideoPlayView.h */,
 				84FC25A01C06F260004F7EA7 /* FMGVideoPlayView.m */,
 				84FC25A11C06F260004F7EA7 /* FMGVideoPlayView.xib */,
@@ -470,7 +465,7 @@
 				TargetAttributes = {
 					84DA1DC01C02E5DA00669B7D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = LL7GM42E2F;
+						DevelopmentTeam = M6VFG85LZ8;
 					};
 					84DA1DD91C02E5DA00669B7D = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -609,7 +604,6 @@
 				D7DDC8341C049CEA002315A5 /* HLLMediaModel.m in Sources */,
 				84FC24EF1C02F861004F7EA7 /* HTTPTool.m in Sources */,
 				84FC25551C041C7D004F7EA7 /* HLLPlayViewController.m in Sources */,
-				84FC258C1C06ECA0004F7EA7 /* YFViewPager.m in Sources */,
 				84FC256B1C0551F5004F7EA7 /* HLLMediaInfoModel.m in Sources */,
 				84FC25651C054706004F7EA7 /* HLLClass.m in Sources */,
 				84FC25AC1C070498004F7EA7 /* HLLMoviePlayerController.m in Sources */,
@@ -754,6 +748,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: rocky Young (G5SX9HA8BM)";
 				INFOPLIST_FILE = HLLMediaPlay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HLL.HLLMediaPlay;
@@ -765,6 +760,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4F6BAC5AF1341E33B1738CC /* Pods-HLLMediaPlay.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: rocky Young (G5SX9HA8BM)";
 				INFOPLIST_FILE = HLLMediaPlay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HLL.HLLMediaPlay;
