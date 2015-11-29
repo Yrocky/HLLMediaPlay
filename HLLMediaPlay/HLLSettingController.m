@@ -31,6 +31,24 @@
 
     [super viewWillAppear:animated];
     
+    [self setupPlayMediaInGPRS];
+    
+    [self setupMediaTypeAndClearCacheFolder];
+}
+
+- (void) setupPlayMediaInGPRS{
+
+    BOOL open = [[NSUserDefaults standardUserDefaults] boolForKey:@"GPRS"];
+    UISwitch * GPRSSwitch = [[UISwitch alloc] init];
+    GPRSSwitch.on = open;
+    [GPRSSwitch addTarget:self action:@selector(GPRSSwitchDidChangeValue:) forControlEvents:UIControlEventValueChanged];
+    NSIndexPath * GPRSIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell * GPRSCell = [self.tableView cellForRowAtIndexPath:GPRSIndexPath];
+    GPRSCell.accessoryView = GPRSSwitch;
+}
+- (void) setupMediaTypeAndClearCacheFolder{
+
+    // mediaType
     NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
     NSInteger row = [rowString integerValue];
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:1];
@@ -40,6 +58,7 @@
     }
     _selectedCell = cell;
     
+    // clearCacheFolder
     float folderSize = [[FileHandle sharedPlistHandle] getCacheFileSizeAtCachePath];
     if (!folderSize) {
         
@@ -50,6 +69,10 @@
     }
 }
 
+- (void) GPRSSwitchDidChangeValue:(UISwitch *)GPRSSwitch{
+
+    [[NSUserDefaults standardUserDefaults] setBool:GPRSSwitch.on forKey:@"GPRS"];
+}
 - (void) clearCacheMediaWithIndexPath:(NSIndexPath *)indexPath{
 
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要清空缓存视频么" preferredStyle:UIAlertControllerStyleAlert];
