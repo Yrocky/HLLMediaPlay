@@ -111,7 +111,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="视频画质" footerTitle="即使设置了高画质，但是在没有更画质的情况下会使用较低画质的视频" id="uNy-lv-qcq">
+                            <tableViewSection headerTitle="视频画质" footerTitle="即使设置了高画质，但是在没有高画质的情况下会使用较低画质的视频" id="uNy-lv-qcq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="2Hr-Y3-9WH" imageView="jI1-tP-f9F" style="IBUITableViewCellStyleDefault" id="5QL-Cz-deh">
                                         <rect key="frame" x="0.0" y="209" width="600" height="44"/>

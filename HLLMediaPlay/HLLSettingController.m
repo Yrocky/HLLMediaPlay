@@ -31,6 +31,24 @@
 
     [super viewWillAppear:animated];
     
+    [self setupPlayMediaInGPRS];
+    
+    [self setupMediaTypeAndClearCacheFolder];
+}
+
+- (void) setupPlayMediaInGPRS{
+
+    BOOL open = [[NSUserDefaults standardUserDefaults] boolForKey:@"GPRS"];
+    UISwitch * GPRSSwitch = [[UISwitch alloc] init];
+    GPRSSwitch.on = open;
+    [GPRSSwitch addTarget:self action:@selector(GPRSSwitchDidChangeValue:) forControlEvents:UIControlEventValueChanged];
+    NSIndexPath * GPRSIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell * GPRSCell = [self.tableView cellForRowAtIndexPath:GPRSIndexPath];
+    GPRSCell.accessoryView = GPRSSwitch;
+}
+- (void) setupMediaTypeAndClearCacheFolder{
+
+    // mediaType
     NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
     NSInteger row = [rowString integerValue];
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:1];
@@ -39,9 +57,23 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     _selectedCell = cell;
+    
+    // clearCacheFolder
+    float folderSize = [[FileHandle sharedPlistHandle] getCacheFileSizeAtCachePath];
+    if (!folderSize) {
+        
+        NSIndexPath * clearIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        UITableViewCell * clearCell = [self.tableView cellForRowAtIndexPath:clearIndexPath];
+        clearCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        clearCell.textLabel.textColor = [UIColor lightGrayColor];
+    }
 }
 
-- (void) clearCacheMedia{
+- (void) GPRSSwitchDidChangeValue:(UISwitch *)GPRSSwitch{
+
+    [[NSUserDefaults standardUserDefaults] setBool:GPRSSwitch.on forKey:@"GPRS"];
+}
+- (void) clearCacheMediaWithIndexPath:(NSIndexPath *)indexPath{
 
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要清空缓存视频么" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -53,6 +85,10 @@
         // 删除放视频的文件夹
         [[FileHandle sharedPlistHandle] clearMediaCacheFolder];
         
+        // 将cell置为不能选
+        UITableViewCell * clearCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        clearCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        clearCell.textLabel.textColor = [UIColor lightGrayColor];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:sureAction];
@@ -76,8 +112,8 @@
         NSString * rowString = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         [[NSUserDefaults standardUserDefaults] setObject:rowString forKey:@"mediaType"];
     }
-    if(indexPath.section == 2 && indexPath.row == 0){
-        [self clearCacheMedia];
+    if(indexPath.section == 2 && indexPath.row == 0 && [[FileHandle sharedPlistHandle] getCacheFileSizeAtCachePath]){
+        [self clearCacheMediaWithIndexPath:indexPath];
     }
 }
 /*

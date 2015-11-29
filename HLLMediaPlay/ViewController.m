@@ -65,11 +65,11 @@
 
     if (self.medias.count) {
         self.tableView.hidden = NO;
-        self.trashBarButtonItem.enabled = self.editBarButtonItem.enabled = YES;
+        self.editBarButtonItem.enabled = YES;
     }else{
         self.tableView.hidden = YES;
         [self.tableView setEditing:NO animated:YES];
-        self.trashBarButtonItem.enabled = self.editBarButtonItem.enabled = NO;
+        self.editBarButtonItem.enabled = NO;
     }
 }
 - (IBAction)mainViewContoller_ClearMediaData:(id)sender {

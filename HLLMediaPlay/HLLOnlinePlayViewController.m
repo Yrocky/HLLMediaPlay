@@ -85,15 +85,19 @@
     NSString * status = [networkManager localizedNetworkReachabilityStatusString];
     NSLog(@"status:%@",status);
     if (wwan) {
-        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"当前使用蜂窝移动网络，继续观看可能会产生大量的流量，是否继续？您可以到\"设置->蜂窝移动网络播放\"进行设置" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self playerMedia];
-        }];
-        [alertController addAction:cancelAction];
-        [alertController addAction:sureAction];
         
-        [self presentViewController:alertController animated:YES completion:nil];
+        BOOL open = [[NSUserDefaults standardUserDefaults] boolForKey:@"GPRS"];
+        if (!open) {            
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"当前使用蜂窝移动网络，继续观看可能会产生大量的流量，是否继续？您可以到\"设置->蜂窝移动网络播放\"进行设置" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self playerMedia];
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:sureAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
     }else{
     
         [self playerMedia];
@@ -103,13 +107,24 @@
 
 // 播放视频
 - (void) playerMedia{
-    
+
     NSString * playPath;
     NSURL * playUrl;
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
     NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
     NSString * lowP = self.mediaInfoModel.playurl[@"360P"];
-    playPath = highP ? highP:(middleP?middleP:lowP);
+    
+    NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
+    NSInteger row = [rowString integerValue];
+    if (row) {
+        if (row == 1) {// middle
+            playPath = (middleP?middleP:lowP);
+        }else{// low
+            playPath = lowP;
+        }
+    }else{//  high
+        playPath = highP ? highP:(middleP?middleP:lowP);
+    }
     
     BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:[NSString stringWithFormat:@"%@",self.model.ID]];
     
@@ -253,19 +268,31 @@
 // 对获得到的视频内容进行下载和使用moviePlayer控制器的view进行展示
 - (void) playMediaWithMoviePlayerViewAndDowloadMediaWithResponseObject:(id)responseObject{
 
-    NSString * playurl;
+    NSString * playPath;
+    NSURL * playUrl;
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
     NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
     NSString * lowP = self.mediaInfoModel.playurl[@"360P"];
-    playurl = highP ? highP:(middleP?middleP:lowP);
     
-    [self downloadTaskWithUrlString:playurl
+    NSString * rowString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mediaType"];
+    NSInteger row = [rowString integerValue];
+    if (row) {
+        if (row == 1) {// middle
+            playPath = (middleP?middleP:lowP);
+        }else{// low
+            playPath = lowP;
+        }
+    }else{//  high
+        playPath = highP ? highP:(middleP?middleP:lowP);
+    }
+    
+    
+    [self downloadTaskWithUrlString:playPath
                            fileName:self.model.title
                            imageUrl:self.model.img
                         description:responseObject[@"description"]
                                  ID:self.model.ID];
     
-    NSString * mediaPath =  [[FileHandle sharedPlistHandle] getMediaPathWithFileName:self.model.title];
     BOOL exist = [[PlistHandle sharedPlistHandle] existMediaFromPlist:@"dowload" WithID:self.model.ID];
     if (exist) {
         
