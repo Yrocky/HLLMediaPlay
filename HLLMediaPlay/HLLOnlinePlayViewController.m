@@ -222,10 +222,10 @@
     self.playButton.enabled = YES;
     [self.playButton setImage:[UIImage imageNamed:@"full_play_btn.png"] forState:UIControlStateNormal];
     
-    self.titleLabel.text = self.mediaInfoModel.title;
-    self.scoreLabel.text = self.mediaInfoModel.score;
-    self.yearLabel.text = self.mediaInfoModel.year;
-    self.descriptionLabel.text = self.mediaInfoModel.mediaDescription;
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",self.mediaInfoModel.title];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%@",self.mediaInfoModel.score];
+    self.yearLabel.text = [NSString stringWithFormat:@"%@",self.mediaInfoModel.year];
+    self.descriptionLabel.text = [NSString stringWithFormat:@"%@",self.mediaInfoModel.mediaDescription];
     
     NSArray * types = self.mediaInfoModel.type;
     if (types.count) {
