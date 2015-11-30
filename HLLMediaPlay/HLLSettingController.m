@@ -9,7 +9,7 @@
 #import "HLLSettingController.h"
 #import "FileHandle.h"
 #import "PlistHandle.h"
-
+#import <AVFoundation/AVFoundation.h>
 
 @interface HLLSettingController ()
 @property (nonatomic ,strong) UITableViewCell * selectedCell;
@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

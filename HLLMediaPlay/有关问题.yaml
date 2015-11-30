@@ -26,7 +26,22 @@
     playerViewController.player = player;
     [self presentViewController:playerViewController animated:YES completion:nil];
 
+update
 
+	mediaPath是视频的本地路径
+	mediaLineString是视频的网络地址
+	mediaUrl是转化之后的视频URL
+
+	 这里的问题在于使用MediaPlayer的时候使用
+	 	NSURL * mediaUrl = [NSURL fileURLWithPath:mediaPath];（本地视频路径）
+	 	NSURL * mediaUrl = [NSURL URLWithString:mediaPath];（本地视频路径）
+	 	NSURL * mediaUrl = [NSURL URLWithString:mediaLineString];（网络视频路径）
+	 都可以进行播放
+	 但是如果使用AV的时候只能使用
+	 	NSURL * mediaUrl = [NSURL fileURLWithPath:mediaPath];（本地视频路径）
+	 	NSURL * mediaUrl = [NSURL URLWithString:mediaLineString];（网络视频路径）
+
+end
 
 2.关于plist和视频的缓存地址
 
@@ -37,3 +52,16 @@
 3.关于使用自动布局进行横屏和竖屏之间的样式转换还是没有弄好，即使设置了横屏下的约束到真的是横屏的时候还是竖屏的约束
 
 	关于这个问题还是要看看以前的一片讲自动布局的那个文章，暂时没有找到，找到了把链接放这里
+
+
+4.自己写的那个HLLClass还是有很大的缺陷的，比如，从服务端获取的如果是一个0，即使模型中使用的接受是一个NSString，在使用的时候
+还是一个Number类型的值，如果直接将这个属性值赋给一个控件显示会导致崩溃，所以还是使用MJExtension比较安全，毕竟他已经考虑了很多的情况
+
+
+
+5.使用AV播放音频
+
+	    NSURL *url=[[NSBundle mainBundle]URLForResource:@"glass.wav" withExtension:nil];
+	    SystemSoundID soundID=0;
+	    AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+	    AudioServicesPlayAlertSound(soundID);
