@@ -14,6 +14,7 @@
 #import "HLLMediaModel.h"
 #import "HLLOnlineCell.h"
 #import "HTTPTool.h"
+#import "HLLWebViewController.h"
 
 @interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
@@ -52,6 +53,11 @@
         HLLPlayerController * playerController = segue.destinationViewController;
         playerController.mediaID = sender;
     }
+    if ([identifier isEqualToString:@"htmlIdentifier"]) {
+//        HLLWebViewController * playerController = segue.destinationViewController;
+
+    }
+    
 }
 
 #pragma mark - Table view data source
@@ -96,13 +102,18 @@
     }];
     UIAlertAction * systemAction = [UIAlertAction actionWithTitle:@"使用系统播放器进行播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
+        [self performSegueWithIdentifier:@"onlinePlay" sender:model];
     }];
-    [self performSegueWithIdentifier:@"onlinePlay" sender:model];
+    UIAlertAction * htmlAction = [UIAlertAction actionWithTitle:@"使用HTML进行播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self performSegueWithIdentifier:@"htmlIdentifier" sender:model];
+    }];
     
     [actionSheetController addAction:cancelAction];
     [actionSheetController addAction:systemAction];
     [actionSheetController addAction:customAction];
-//    [self.tabBarController presentViewController:actionSheetController animated:YES completion:nil];
+    [actionSheetController addAction:htmlAction];
+    [self.tabBarController presentViewController:actionSheetController animated:YES completion:nil];
 }
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{

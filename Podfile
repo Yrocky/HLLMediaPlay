@@ -5,6 +5,8 @@
 
 target 'HLLMediaPlay' do
 
+
+pod 'hpple', '~> 0.2.0'
 pod "VKVideoPlayer", "~> 0.1.1"
 pod 'MJRefresh', '~> 3.0.5'
 pod 'FDFullscreenPopGesture', '1.1'

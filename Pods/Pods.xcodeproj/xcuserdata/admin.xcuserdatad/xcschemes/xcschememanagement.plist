@@ -79,25 +79,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>hpple.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>180AA5211D7564FA1B6E301EC3ABD6AE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2C71DE0FB8A6E5BB6EAF9FB037D799CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40663EEF5E17D6AE465229A98C4C357F</key>
+		<key>40DF5DF3B79A3FF5DE683AADA599A531</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CCCE836B89A7C5467C493C44A8C5FC2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,17 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F28494EB65EDA33D2C2C27AC0C38C3C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>78239A33F829C2F1E81A0ACEDD00709E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8397D4A09A425D49DFCDC7049CDEDF02</key>
+		<key>7F2655963C4855062E671D4AA71018EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +132,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>915EC78BA15D884A11DDBA47F54CDF5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B23B3D15FFC0FC9893968F478086D58D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA250BDE05647A8E5AE0B5FB0421E3CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB21FC4E7764DAE811B650AEE3A391F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -143,11 +158,6 @@
 			<true/>
 		</dict>
 		<key>DD684CEF78B7725D997FF4EABD47BD10</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA2EF5EAC34FB432C8A9E23B9E5159BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

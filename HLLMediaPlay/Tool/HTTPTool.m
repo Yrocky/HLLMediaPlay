@@ -72,4 +72,19 @@
         fail(operation,error);
     }];
 }
+
+// ttp://v.apix.cn/apixcredit/bankcardauth/bankcardauth
++ (void) requestBankCode:(NSString *)bankCode name:(NSString *)name bankcardno:(NSString *)bankcardno successedBlock:(SuccessBlock)success andFailedBlock:(FailBlock)fail{
+    
+    AFHTTPRequestOperationManager *manager = [HTTPTool initAFHttpManager];
+    
+    NSDictionary *parameters = @{@"apikey":@"8a0f0d6d9236a7135477e1fc2e744ef3",
+                                 @"cardnum":bankcardno};
+    
+    [manager GET:@"http://apis.baidu.com/datatiny/cardinfo/cardinfo" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation,responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(operation,error);
+    }];
+}
 @end

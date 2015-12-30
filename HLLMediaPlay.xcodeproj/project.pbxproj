@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845EAFBE1C33A93500A8DF92 /* HLLWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EAFBD1C33A93500A8DF92 /* HLLWebViewController.m */; };
+		845EAFC11C33ABE200A8DF92 /* chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 845EAFBF1C33ABE200A8DF92 /* chart.html */; };
+		845EAFC21C33ABE200A8DF92 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 845EAFC01C33ABE200A8DF92 /* main.js */; };
 		848A94351C0C2D1F004C526A /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 848A94341C0C2D1F004C526A /* glass.wav */; };
 		84D65F001C08511100D1E27E /* HLLSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D65EFF1C08511100D1E27E /* HLLSettingController.m */; };
 		84DA1DC61C02E5DA00669B7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DC51C02E5DA00669B7D /* main.m */; };
@@ -70,6 +73,10 @@
 /* Begin PBXFileReference section */
 		66211CA6D64625E23AAE21B6 /* libPods-HLLMediaPlay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HLLMediaPlay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7689D0A7E0D63A4578221F04 /* Pods-HLLMediaPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLLMediaPlay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLLMediaPlay/Pods-HLLMediaPlay.debug.xcconfig"; sourceTree = "<group>"; };
+		845EAFBC1C33A93500A8DF92 /* HLLWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLWebViewController.h; sourceTree = "<group>"; };
+		845EAFBD1C33A93500A8DF92 /* HLLWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLWebViewController.m; sourceTree = "<group>"; };
+		845EAFBF1C33ABE200A8DF92 /* chart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = chart.html; path = Resource/chart.html; sourceTree = "<group>"; };
+		845EAFC01C33ABE200A8DF92 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = Resource/main.js; sourceTree = "<group>"; };
 		848A94341C0C2D1F004C526A /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
 		84D65EFE1C08511100D1E27E /* HLLSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSettingController.h; sourceTree = "<group>"; };
 		84D65EFF1C08511100D1E27E /* HLLSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSettingController.m; sourceTree = "<group>"; };
@@ -312,6 +319,8 @@
 				84FC25671C054E4B004F7EA7 /* HLLOnlinePlayViewController.m */,
 				84FC255E1C0449A5004F7EA7 /* MoviePlayerViewController.h */,
 				84FC255F1C0449A5004F7EA7 /* MoviePlayerViewController.m */,
+				845EAFBC1C33A93500A8DF92 /* HLLWebViewController.h */,
+				845EAFBD1C33A93500A8DF92 /* HLLWebViewController.m */,
 				84FC257C1C0692A3004F7EA7 /* model */,
 				84FC257B1C069289004F7EA7 /* view */,
 			);
@@ -397,6 +406,8 @@
 		D7DDC83D1C05F2DB002315A5 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				845EAFBF1C33ABE200A8DF92 /* chart.html */,
+				845EAFC01C33ABE200A8DF92 /* main.js */,
 				84DA1DCD1C02E5DA00669B7D /* Main.storyboard */,
 				84DA1DD01C02E5DA00669B7D /* Assets.xcassets */,
 				84FC25821C06D947004F7EA7 /* icon@2x.png */,
@@ -481,7 +492,7 @@
 				TargetAttributes = {
 					84DA1DC01C02E5DA00669B7D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = M6VFG85LZ8;
+						DevelopmentTeam = GH82F497WJ;
 					};
 					84DA1DD91C02E5DA00669B7D = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -523,8 +534,10 @@
 				84FC25841C06D947004F7EA7 /* icon@2x.png in Resources */,
 				84DA1DD41C02E5DA00669B7D /* LaunchScreen.storyboard in Resources */,
 				84FC25A71C06F260004F7EA7 /* FMGVideoPlayView.xib in Resources */,
+				845EAFC21C33ABE200A8DF92 /* main.js in Resources */,
 				848A94351C0C2D1F004C526A /* glass.wav in Resources */,
 				84FC25851C06D947004F7EA7 /* icon@3x.png in Resources */,
+				845EAFC11C33ABE200A8DF92 /* chart.html in Resources */,
 				84DA1DD11C02E5DA00669B7D /* Assets.xcassets in Resources */,
 				D7DDC8311C0493FF002315A5 /* mediaSource.json in Resources */,
 				84FC25621C0458EF004F7EA7 /* lunch.jpg in Resources */,
@@ -611,6 +624,7 @@
 				84FC24F31C02FEC2004F7EA7 /* HLLSearchMediaModel.m in Sources */,
 				84FC25711C059DA6004F7EA7 /* HLLDowloadCell.m in Sources */,
 				84FC25931C06EFF7004F7EA7 /* HLLPlayerController.m in Sources */,
+				845EAFBE1C33A93500A8DF92 /* HLLWebViewController.m in Sources */,
 				84DA1DCC1C02E5DA00669B7D /* ViewController.m in Sources */,
 				84DA1DC91C02E5DA00669B7D /* AppDelegate.m in Sources */,
 				84D65F001C08511100D1E27E /* HLLSettingController.m in Sources */,

@@ -7,8 +7,15 @@
 //
 
 #import "HLLClass.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
-@interface HLLMediaInfoModel : HLLClass
+@protocol HLLJS <JSExport>
+
+- (NSString *) videoURL;
+
+@end
+
+@interface HLLMediaInfoModel : HLLClass<HLLJS>
 
 @property (nonatomic ,copy) NSString * actors;
 @property (nonatomic ,copy) NSString * directors;

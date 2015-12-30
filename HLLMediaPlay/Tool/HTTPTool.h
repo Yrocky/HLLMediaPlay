@@ -37,4 +37,6 @@ typedef void(^FailBlock) (AFHTTPRequestOperation *operation, NSError *error);
 + (void) requestJXVDYMediaSourceWithKeyword:(NSString *)keyWord offset:(NSString *)offset successedBlock:(SuccessBlock)success andFialedBlock:(FailBlock)fail;
 
 + (void) requestJXVDYMediaInfoWithID:(NSString *)ID successedBlock:(SuccessBlock)success andFialedBlock:(FailBlock)fail;
+
++ (void) requestBankCode:(NSString *)bankCode name:(NSString *)name bankcardno:(NSString *)bankcardno successedBlock:(SuccessBlock)success andFailedBlock:(FailBlock)fail;
 @end

@@ -14,4 +14,8 @@
 
     return @{@"description":@"mediaDescription"};
 }
+- (NSString *)videoURL{
+
+    return self.url;
+}
 @end
