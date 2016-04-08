@@ -10,6 +10,7 @@
 		845EAFBE1C33A93500A8DF92 /* HLLWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EAFBD1C33A93500A8DF92 /* HLLWebViewController.m */; };
 		845EAFC11C33ABE200A8DF92 /* chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 845EAFBF1C33ABE200A8DF92 /* chart.html */; };
 		845EAFC21C33ABE200A8DF92 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 845EAFC01C33ABE200A8DF92 /* main.js */; };
+		846661B21C7AA7E90010DF8A /* HLLFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846661B11C7AA7E90010DF8A /* HLLFileManager.m */; };
 		848A94351C0C2D1F004C526A /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 848A94341C0C2D1F004C526A /* glass.wav */; };
 		84D65F001C08511100D1E27E /* HLLSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D65EFF1C08511100D1E27E /* HLLSettingController.m */; };
 		84DA1DC61C02E5DA00669B7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA1DC51C02E5DA00669B7D /* main.m */; };
@@ -77,6 +78,8 @@
 		845EAFBD1C33A93500A8DF92 /* HLLWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLWebViewController.m; sourceTree = "<group>"; };
 		845EAFBF1C33ABE200A8DF92 /* chart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = chart.html; path = Resource/chart.html; sourceTree = "<group>"; };
 		845EAFC01C33ABE200A8DF92 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = Resource/main.js; sourceTree = "<group>"; };
+		846661B01C7AA7E90010DF8A /* HLLFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLFileManager.h; sourceTree = "<group>"; };
+		846661B11C7AA7E90010DF8A /* HLLFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLFileManager.m; sourceTree = "<group>"; };
 		848A94341C0C2D1F004C526A /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
 		84D65EFE1C08511100D1E27E /* HLLSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSettingController.h; sourceTree = "<group>"; };
 		84D65EFF1C08511100D1E27E /* HLLSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSettingController.m; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				84FC24EE1C02F861004F7EA7 /* HTTPTool.m */,
 				84FC257F1C06AE43004F7EA7 /* FileHandle.h */,
 				84FC25801C06AE43004F7EA7 /* FileHandle.m */,
+				846661B01C7AA7E90010DF8A /* HLLFileManager.h */,
+				846661B11C7AA7E90010DF8A /* HLLFileManager.m */,
 			);
 			name = tool;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 			files = (
 				84FC25A91C06F260004F7EA7 /* FullViewController.m in Sources */,
 				84FC25681C054E4B004F7EA7 /* HLLOnlinePlayViewController.m in Sources */,
+				846661B21C7AA7E90010DF8A /* HLLFileManager.m in Sources */,
 				84FC25811C06AE43004F7EA7 /* FileHandle.m in Sources */,
 				D7DDC8371C04A18E002315A5 /* HLLOnlineController.m in Sources */,
 				84FC24F71C030B7E004F7EA7 /* HLLSearchController.m in Sources */,

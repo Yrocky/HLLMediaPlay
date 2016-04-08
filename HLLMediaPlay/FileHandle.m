@@ -61,7 +61,10 @@ static FileHandle *_instance;
     
     NSString *cachePath = [self getMediaCachePath];
     
-    [fileManager removeItemAtPath:cachePath error:nil];
+    NSError * error;
+    if (![fileManager removeItemAtPath:cachePath error:&error]) {
+        NSLog(@"Fail to remove .Error infromation:%@",[error localizedDescription]);
+    }
 }
 
 // 删除本地缓存的视频
@@ -70,8 +73,11 @@ static FileHandle *_instance;
     NSFileManager *fileManager=[NSFileManager defaultManager];
     
     NSString * mediaPath = [self getMediaPathWithFileName:fileName];
+    NSError * error;
     
-    [fileManager removeItemAtPath:mediaPath error:nil];
+    if(![fileManager removeItemAtPath:mediaPath error:nil]){
+        NSLog(@"Fail to remove .Error infromation:%@",[error localizedDescription]);
+    };
 }
 
 #pragma mark - fileAttribute
@@ -125,11 +131,9 @@ static FileHandle *_instance;
 
     NSFileManager * fileManager = [NSFileManager defaultManager];
     
-    NSFileManager* manager = [NSFileManager defaultManager];
-    
     if (![fileManager fileExistsAtPath:[self getMediaCachePath]]) return 0;
     
-    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:[self getMediaCachePath]] objectEnumerator];
+    NSEnumerator *childFilesEnumerator = [[fileManager subpathsAtPath:[self getMediaCachePath]] objectEnumerator];
     
     NSString* fileName;
     

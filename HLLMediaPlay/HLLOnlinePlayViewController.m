@@ -269,7 +269,7 @@
 - (void) playMediaWithMoviePlayerViewAndDowloadMediaWithResponseObject:(id)responseObject{
 
     NSString * playPath;
-    NSURL * playUrl;
+
     NSString * highP = self.mediaInfoModel.playurl[@"720P"];
     NSString * middleP = self.mediaInfoModel.playurl[@"480P"];
     NSString * lowP = self.mediaInfoModel.playurl[@"360P"];

@@ -15,6 +15,7 @@
 #import "HLLOnlineCell.h"
 #import "HTTPTool.h"
 #import "HLLWebViewController.h"
+#import "HLLFileManager.h"
 
 @interface HLLOnlineController ()<UISearchBarDelegate>
 @property (nonatomic ,strong) NSMutableArray * onlineMedias;
@@ -40,6 +41,16 @@
 
     [self searchKeyword:keyword loadMore:NO];
     
+    HLLFileManager * fileManager = [HLLFileManager sharedFileManager];
+    
+    NSURL * url = [NSURL URLWithString:@"http://211.152.49.184:9000/upload/onephoto/f1441949100570.jpg"];
+    [fileManager downloadImage:url];
+    
+    HLLImageDownload * imageDownload = [[HLLImageDownload alloc] init];
+    imageDownload.fileURL = [fileManager getImageUrlWithFileName:@"当我们屏蔽父母的朋友圈时"];
+    imageDownload.filePath = [fileManager getImagePathWithFileName:@"当我们屏蔽父母的朋友圈时"];
+    imageDownload.imageURL = url;
+    [imageDownload startDownloadImage];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
